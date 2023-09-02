@@ -150,7 +150,7 @@ sdb       8:16   0  3.6T  0 disk
 └─sdb4    8:20   0    1M  0 part
 ```
 
-All looks fine, but a small change I want to make is changing how /tmp  is mounted. It's mounted as tmpfs which stores the contents in RAM til the next boot. In this case I'd rather have it be part of the rootfs
+All looks fine, but a small change I want to make is changing how /tmp  is mounted. It's mounted as tmpfs which stores the contents in RAM until the next boot. In this case I'd rather have it be part of the rootfs
 
 `systemctl mask tmp.mount` and we `reboot`
 Now we can check if it's been masked:
@@ -161,7 +161,7 @@ Now we can check if it's been masked:
      Loaded: masked (Reason: Unit tmp.mount is masked.)
      Active: inactive (dead)
 ```
-Now we can see /tmp hasnt been initialized as tmpfs:
+Now we can see `/tmp` hasnt been initialized as `tmpfs`:
 
 ```
 [root@ArchBoX ~]# df -h
