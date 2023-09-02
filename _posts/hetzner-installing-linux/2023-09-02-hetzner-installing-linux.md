@@ -50,7 +50,7 @@ The first line means RAID is already enabled by default, so we won't have to mod
 SWRAID 1
 SWRAIDLEVEL 0
 ```
-Next, we'll set up the partitioning and make the following changes:
+Next, we'll set up the partitioning by applying the following changes:
 ```
 PART swap swap 16G
 PART /boot ext3 512M
