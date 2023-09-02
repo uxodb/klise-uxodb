@@ -1,6 +1,6 @@
 # Site settings
 title: uxodb's blog # site title
-description: Technical journey and self reference.
+description: Recording my progress in the technical realm.
 
 lang: en-US # default lang
 timezone: Europe/Amsterdam # set your timezone
@@ -11,7 +11,7 @@ mode: dark # default theme "dark" | "light"
 # Profile settings
 author:
   name: uxodb # author name
-  bio: Documenting my technical journey. # tell to the world
+  bio: Recording my progress in the technical realm.. # tell to the world
   username: uxodb # general username
   github: uxodb # github username
 #  twitter: twitter_username # twitter username
