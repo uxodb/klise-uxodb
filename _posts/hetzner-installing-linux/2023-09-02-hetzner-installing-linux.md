@@ -34,7 +34,7 @@ From here on, we'll start up Hetzner's tool for installing our OS. We do this by
 `root@rescue ~ # installimage`
 Then we are presented a menu in which we're given the option to have our preferred distribution installed. Its also possible to provide your own image, but I've decided to go with Archlinux:
 <figure>
-<img src"/hetzner-installing-linux/installimage_menu.png" alt="Installimage menu">
+<img src="/hetzner-installing-linux/installimage_menu.png" alt="Installimage menu">
 <figcaption>The menu for choosing your distribution</figcaption>
 </figure>
 After selecting Archlinux and proceeding, an <abbr title="Midnight Commander's included editor">mcedit</abbr> is launched with the configuration file.
@@ -182,10 +182,10 @@ tmpfs           3.2G     0  3.2G   0% /run/user/1000
 
 We can now proceed by creating the user account, and setting up SSH.
 `useradd -m -G root -S /bin/bash uxodb`
-we install sudo and configure sudoers: 
+we install sudo and configure <a href="https://www.sudo.ws/docs/man/1.8.15/sudoers.man/" target="_blank" rel="noopener">sudoers</a>: 
 `pacman -Syu sudo`
 And for sudoers we'll be using the drop-in function by adding a file with the configuration to `/etc/sudoers.d`. The way I'll configure this will prevent me from having to re-authenticate when using sudo.
-`echo "uxodb ALL=(ALL) NOPASSWD: ALL" > /etc/suoders.d/uxodb`
+`echo "uxodb ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/suoders.d/uxodb`
 
 ### Creating SSH keys and configuring sshd_config
 
