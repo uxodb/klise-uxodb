@@ -3,11 +3,11 @@ title: "Hetzner: Installing Linux"
 date: 2023-09-02
 tags: [unix/linux, cli, hetzner]
 ---
-A few years back I rented a dedicated server from Hetzner. In this piece I will document Hetzner's simplified process for installing linux on the box.
+Some years ago, I leased a dedicated server from Hetzner. In this piece I will outline Hetzner's simplified process for installing Linux on this server
 
 ### Installing and configuring
 
-After going through the payment process I received an email containing this information:
+After going through the payment process I received an email containing the following information:
 
 ```
 IPv4 Address:	78.46.174.158
@@ -19,8 +19,7 @@ qSt2t9EVp7z5ehrJMiSuSHKQ5/1rXL6wzy/I3Su9k8c (ECDSA 256)
 qdLfInM7MxtFxr5KNQe8s9qywkVdrvsLUWGzbb0rQQ8 (ED25519 256)
 CbqGZzPfRnIXE4o8ErsN+2Q4PXSIu9TGMOubpxf66rA (RSA 3072)
 ```
-
-With this information we'll be able to log into the box. Using either putty or a terminal of some sorts I log into the box: `ssh root@78.46.174.158` it'll request the password, so I copy that in.
+With this information, we can now log into the server. Using either Putty or a terminal of some sorts, we log into the server with the command: `$ ssh root@78.46.174.158`. It will prompt for the password, so we can copy that in.
 
 After we do so, we're greeted by Hetzner's Rescue System
 
@@ -33,40 +32,47 @@ It immediately shows a summary of the system's specs, so the storage, cpu, memor
 
 From here on, we'll start up Hetzner's tool for installing our OS. We do this by running the installimage binary:
 `root@rescue ~ # installimage`
-Then we get a menu in which we can make our choice for the distribution to be installed. Its also possible to provide your own image, but I've decided to go with Archlinux:
+Then we are presented a menu in which we're given the option to have our preferred distribution installed. Its also possible to provide your own image, but I've decided to go with Archlinux:
 <figure>
 <img src"/hetzner-installing-linux/installimage_menu.png" alt="Installimage menu">
 <figcaption>The menu for choosing your distribution</figcaption>
 </figure>
+After selecting Archlinux and proceeding, an <abbr title="Midnight Commander's included editor">mcedit</abbr> is launched with the configuration file.
+The configuration file serves the purpose of further configuring the server according to our wishes. There are a few options like setting up LVM for your storage, changing the bootloader, etc... In this case we will only make the changes outlined below.
 
-So after we've selected Archlinux, an editor (Midnight Commander) is launched with the configuration file.
-There's a few options you can set within this configuration, like set up LVM, change the bootloader. I have decided to set up this system in a way calling only for the changes I make below.
-
-Within this configuration file I make the following changes:
-`SWRAIDLEVEL 1` to `SWRAIDLEVEL 0`, you dont have to enable RAID as it should be enabled, it should say `SWRAID 1`, meaning RAID has been enabled by default.
-
-and
+We'll be setting up RAID-0. The RAID settings are:
+```bash
+SWRAID 1
+SWRAIDLEVEL 1
+```
+The first line means RAID is already enabled by default, so we won't have to modify this line. We will modify the second line to achieve RAID-0
+```
+SWRAID 1
+SWRAIDLEVEL 0
+```
+Next, we'll set up the partitioning and make the following changes:
 ```
 PART swap swap 16G
 PART /boot ext3 512M
 PART / ext4 1024G
 PART /home ext4 all
 ```
-
+to
 ```
-PART swap swap 16G
-PART /boot ext3 2G
+PART swap swap 8G
+PART /boot ext3 1G
 PART / ext4 all
 ```
-You may also change the system's hostname:
-`HOSTNAME yourhostname`
+In this change I have set up a swapfile of 8g, allocated 1GB to the <abbr title="Filesystem">ext3</abbr> boot partition and allocated the rest of the space to the root filesystem at `/`.
 
-So what is happening here, I have decided to use RAID-0, set up a swapfile of 16g, allocate 2g to my (ext3) boot partition, and allocate the rest of the space to my root filesystem at `/` using ext4.
+We'll also want to change the system's hostname:
+```
+HOSTNAME yourhostname
+```
+After we're done, we may continue by hitting <kbd>F10</kbd> and choosing "Yes" to safe the configuration.
+We'll be greeted by a warning stating that the data on the drives will be deleted, which is to be expected so we, again, continue by choosing "Yes"
 
-To continue we hit <kbd>F10</kbd> and choose "Yes" to save the configuration.
-We'll be greeted by a warning stating that the data on the drives will be deleted, which is to be expected so we continue by choosing "Yes"
-
-Now the script will set up the system according to the OS we chose and configuration we edited. It'll look like this:
+Now the script will set up the system according to the previously selected distribution and configuration we edited. It'll look like this:
 
 ```
 Hetzner Online GmbH - installimage
@@ -109,16 +115,15 @@ Hetzner Online GmbH - installimage
   You can now reboot and log in to your new system with the
 same credentials that you used to log into the rescue system.
 ```
+Now we reboot the server and log into it with the same credentials.
+Since Hetzner's network is set up with DHCP, theres no need for configuring the connection or whatsoever.
 
-We can reboot the server and log into it with the same credentials.
-Since Hetzner's network is set up with DHCP, theres no need for configuring the connection or whatsoever anymore.
+### Proceeding after the installation
 
-### Configuring further after the install
-
-After logging in we can check if the drives have been set up according to our wish:
+Logging in to the server, we'll want to verify the drives have been set up correctly.
 
 ```
-[root@ArchBoX ~]# df -h
+[root@Archlinux ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 dev              16G     0   16G   0% /dev
 run              16G  844K   16G   1% /run
@@ -130,7 +135,7 @@ tmpfs			 16G	 0	 16G   0% /tmp
 ```
 
 ```
-[root@ArchBoX .config]$ lsblk
+[root@Archlinux .config]$ lsblk
 NAME    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
 sda       8:0    0  3.6T  0 disk
 ├─sda1    8:1    0    2G  0 part
@@ -149,19 +154,20 @@ sdb       8:16   0  3.6T  0 disk
 │ └─md2   9:2    0  7.3T  0 raid0 /
 └─sdb4    8:20   0    1M  0 part
 ```
+It's been set up like we've intended it to, the only change I want to make in this case is the way `/tmp` is mounted. It's mounted as <abbr title="Temporary File System">tmpfs</abbr> which stores its contents only until the next boot. I dont want this, so we'll have to make it persistent, which I will achieve by making `/tmp` part of the root filesystem.
 
-All looks fine, but a small change I want to make is changing how /tmp  is mounted. It's mounted as tmpfs which stores the contents in RAM until the next boot. In this case I'd rather have it be part of the rootfs
-
-`systemctl mask tmp.mount` and we `reboot`
-Now we can check if it's been masked:
-
+```bash
+$ systemctl mask tmp.mount
+$ reboot
 ```
-[root@ArchBoX ~]# systemctl status tmp.mount
+Now to verify it has been masked:
+```
+[root@Archlinux ~]# systemctl status tmp.mount
 ○ tmp.mount
      Loaded: masked (Reason: Unit tmp.mount is masked.)
      Active: inactive (dead)
 ```
-Now we can see `/tmp` hasnt been initialized as `tmpfs`:
+And we can see `/tmp` has not been initialized with `tmpfs`
 
 ```
 [root@ArchBoX ~]# df -h
