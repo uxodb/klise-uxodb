@@ -63,13 +63,13 @@ PART swap swap 8G
 PART /boot ext3 1G
 PART / ext4 all
 ```
-In this change I have set up a swapfile of 8g, allocated 1GB to the <abbr title="Filesystem">ext3</abbr> boot partition and allocated the rest of the space to the root filesystem at `/`.
+In this change I have set up a swapfile of 8g, allocated 1GB to the <abbr title="Filesystem">ext3</abbr> boot partition and allocated the rest of the space to the root filesystem at `/`. Also, no seperate partition for the home folder.
 
 We'll also want to change the system's hostname:
 ```
 HOSTNAME yourhostname
 ```
-After we're done, we may continue by hitting <kbd>F10</kbd> and choosing "Yes" to safe the configuration.
+After we're done, we may continue by hitting <kbd>F10</kbd> and choosing "Yes" to save the configuration.
 We'll be greeted by a warning stating that the data on the drives will be deleted, which is to be expected so we, again, continue by choosing "Yes"
 
 Now the script will set up the system according to the previously selected distribution and configuration we edited. It'll look like this:
