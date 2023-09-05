@@ -21,7 +21,7 @@ author:
 
 # URL settings
 #url: "uxodb.me" #
-url: uxodb.me
+url: https://uxodb.me
 baseurl:
 permalink: /:title/
 google_analytics: # leave it blank if not wish
@@ -82,6 +82,7 @@ exclude:
   - lighthouse.png
   - klise-*.gem
   - klise.gemspec
+  - docker-compose.yml
 
 # Plugins
 plugins:
