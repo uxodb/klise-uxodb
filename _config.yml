@@ -21,7 +21,7 @@ author:
 
 # URL settings
 #url: "uxodb.me" #
-url: blog.named0.com
+url: uxodb.me
 baseurl:
 permalink: /:title/
 google_analytics: # leave it blank if not wish

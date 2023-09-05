@@ -5,7 +5,7 @@ tags: [unix/linux, cli, hetzner]
 ---
 Some years ago, I rented a dedicated server from Hetzner. In this piece I will outline Hetzner's simplified process for installing Linux on this server
 
-### Installing and configuring
+## Installing and configuring
 
 After going through the payment process I received an email containing the following information:
 
@@ -124,7 +124,7 @@ same credentials that you used to log into the rescue system.
 Now we reboot the server and log into it with the same credentials.
 Since Hetzner's network is set up with DHCP, theres no need for configuring the connection or whatsoever.
 
-### Making `/tmp` persistent
+## Making `/tmp` persistent
 Logging in to the server, we'll want to verify the drives have been set up correctly.
 
 ```
@@ -182,7 +182,7 @@ tmpfs            16G     0   16G   0% /dev/shm
 /dev/md0        2.0G   84M  1.8G   5% /boot
 tmpfs           3.2G     0  3.2G   0% /run/user/1000
 ```
-### Setting up the user account and privileges
+## Setting up the user account and privileges
 Now, it's time to install sudo and set up my user account and grant sudo privileges.
 ```bash
 $ useradd -m -S /bin/bash uxodb
@@ -206,7 +206,7 @@ passwd: password updated successfully
 ```
 The user account is now ready and we may proceed on creating our SSH keys.
 
-### Creating SSH keys for authentication
+## Creating SSH keys for authentication
 
 When configuring a (new) server I always make sure to disable root logins and password authentication for <abbr title="Secure Shell">SSH</abbr>. I will outline below how we do this.
 
@@ -275,11 +275,11 @@ $ ssh -i /home/WSLuser/.ssh/id_rsa uxodb@Archlinux
 ```
 That's it. We can now authenticate to the server with our key and without using a password. Next we will finish configuring SSH.
 
-### Further configuring of SSH
+## Further configuring of SSH
 
 So, earlier we have generated the SSH keys and set them up for authenticating without a password. We have also granted the user account root privileges by editing `sudoers`. Next, what we'll want to do is disable password authentication and disable logging in to the server with root. We will achieve this by modifying the <a href="https://linux.die.net/man/5/sshd_config" target="_blank" rel="noopener">configuration</a> of <abbr title="OpenSSH Daemon">sshd</abbr>.
 
-To modify the config we can use any editor like vim or nano. The configuration's location should be `/etc/ssh/sshd_config`, usually.
+To modify the configuration we can use any editor like vim or nano. The location of this file is usually `/etc/ssh/sshd_config`.
 ```bash
 $ sudo nano /etc/ssh/sshd_config
 ```
