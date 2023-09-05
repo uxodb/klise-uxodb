@@ -318,4 +318,4 @@ uxodb@Archlinux: Permission denied (publickey).
 Making it impossible to log in as root, or without a password.
 <hr>
 
-That's it. This is how I've installed and configured (Arch)Linux on a Hetzner server I once rented. It's become somewhat of a long post, but I hope you've enjoyed the read.
+This is the process I followed to install and configure (Arch) Linux on a Hetzner server I had rented in the past. It turned into quite a lengthy post, but I hope you found it enjoyable to read.
