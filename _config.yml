@@ -38,6 +38,8 @@ highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
 
+
+
 # Default front matter
 defaults:
   - scope:
