@@ -1,6 +1,7 @@
 // Code
 code {
-  font-family: $mono-family;
+//  font-family: $mono-family;
+  font-family: $font-date-footer;
   text-rendering: optimizeLegibility;
   font-feature-settings: "calt" 1;
   font-variant-ligatures: normal;
@@ -8,7 +9,8 @@ code {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  font-size: inherit;
+  font-size: 13px;
+//  font-size: inherit;
 
   &.highlighter-rouge {
     padding: 1px 3px;
@@ -55,7 +57,8 @@ pre.highlight, pre {
 
 .highlight,
 .highlight .w {
-  color: #fbf1c7;
+  color: #e6cbb3;
+//  color: #fbf1c7;
   // background-color: #1a1b21;
 }
 
@@ -84,12 +87,14 @@ pre.highlight, pre {
 
 .highlight .o,
 .highlight .ow {
-  color: #fbf1c7;
+//  color: #fbf1c7;
+  color: #e6cbb3;
 }
 
 .highlight .p,
 .highlight .pi {
-  color: #fbf1c7;
+//  color: #fbf1c7;
+  color: #e6cbb3;
 }
 
 .highlight .gi {
