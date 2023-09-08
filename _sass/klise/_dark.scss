@@ -1,6 +1,6 @@
 body[data-theme="dark"] {
   color: $dark-text-base-color;
-  background-color: $dark-black;
+  background-color: $dark-green-bg;
 
   // Heading
   h1,
@@ -29,12 +29,12 @@ body[data-theme="dark"] {
   // Post
   .page-content {
     a {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-green;
 
       &:hover,
       &:active,
       &:focus {
-        color: $dark-text-link-blue-active;
+        color: $dark-text-link-green-active;
       }
     }
 
@@ -48,7 +48,7 @@ body[data-theme="dark"] {
     h5,
     h6 {
       .anchor-head {
-        color: $dark-text-link-blue;
+        color: $dark-text-link-green;
       }
     }
   }
@@ -93,11 +93,11 @@ body[data-theme="dark"] {
     text-decoration-color: $dark-smoke;
 
     &:hover {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-green;
     }
 
     &:focus {
-      outline-color: rgba(255, 82, 119, 0.6);
+      outline-color: $dark-text-link-green;
     }
   }
 
@@ -160,7 +160,8 @@ body[data-theme="dark"] {
     }
 
     .post-item-date {
-      color: $dark-white;
+      color: $dark-date-green;
+      background-color: $dark-date-bg-green;
     }
     .post-item-title {
       a {
@@ -189,7 +190,7 @@ body[data-theme="dark"] {
       &:hover,
       &:focus {
         .post-title {
-          color: $dark-text-link-blue-active;
+          color: $dark-text-link-green-active;
         }
       }
 
@@ -208,10 +209,10 @@ body[data-theme="dark"] {
   // Footer
   .footer {
     span.footer_item {
-      color: $dark-white;
+      color: $dark-date-green;
     }
     a.footer_item:not(:last-child) {
-      color: $dark-white;
+      color: $dark-date-green;
     }
     .footer_copyright {
       color: $dark-gray;
@@ -223,16 +224,16 @@ body[data-theme="dark"] {
   .not-found {
     .title {
       color: $dark-white;
-      text-shadow: 1px 0px 0px $dark-text-link-blue;
+      text-shadow: 1px 0px 0px $dark-text-link-green;
     }
     .phrase {
       color: $dark-text-base-color;
     }
     .solution {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-green;
     }
     .solution:hover {
-      color: $dark-text-link-blue-active;
+      color: $dark-text-link-green-active;
     }
   }  
 

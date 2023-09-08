@@ -3,7 +3,7 @@ $sans-family: Roboto, sans-serif;
 $mono-family: Consolas, monospace;
 $base-font-size: 16px;
 $medium-font-size: $base-font-size * 0.938;
-$small-font-size: $base-font-size * 0.875;
+$small-font-size: $base-font-size * 0.875; //14px
 $base-line-height: 1.85;
 
 // Font weight
@@ -14,8 +14,9 @@ $bold-weight: 700;
 
 //Light Colors
 $text-base-color: #434648;
-$text-link-blue: #003fff;
-$text-link-blue-active: #0036c7;
+$text-link-blue: #003fff; //link/tag 
+$text-link-blue-active: #0036c7; //link/tag hover kleur
+
 
 $black: #0d122b;
 $light: #ececec;
@@ -28,6 +29,15 @@ $dark-text-base-color: #c7bebe;
 $dark-text-link-blue: #ff5277;
 $dark-text-link-blue-active: #ff2957;
 
+// addition
+$dark-text-link-green: #76ffd2;
+$dark-text-link-green-active: #88aea7;
+$font-date-footer: Roboto Mono;
+$dark-green-bg: #131816;
+$dark-date-green: #88aea7;
+$dark-date-bg-green: #172623;
+$light-date-footer: #6b7886;
+//
 $dark-black: #131418;
 $dark-white: #eaeaea;
 $dark-light: #1b1d25;

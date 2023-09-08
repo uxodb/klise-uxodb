@@ -1,7 +1,7 @@
 ---
 title: "Hetzner: Installing Linux"
 date: 2023-09-02
-tags: [unix/linux, cli, hetzner]
+tags: [unix/linux, cli, ssh, systemctl, hetzner]
 ---
 Some years ago, I rented a dedicated server from Hetzner. In this piece I will outline Hetzner's simplified process for installing Linux on this server
 
@@ -317,5 +317,5 @@ uxodb@Archlinux: Permission denied (publickey).
 ```
 Making it impossible to log in as root, or without a password.
 <hr>
-
+---
 This is the process I followed to install and configure (Arch) Linux on a Hetzner server I had rented in the past. It turned into quite a lengthy post, but I hope you found it enjoyable to read.

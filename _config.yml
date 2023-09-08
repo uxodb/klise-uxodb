@@ -1,7 +1,7 @@
 # Site settings
 title: uxodb's blog # site title
 description: >-
-  Recording my progress in the technical realm.
+  IT enthusiast documenting his adventures in the technical realm.
 
 lang: en-US # default lang
 timezone: Europe/Amsterdam # set your timezone
@@ -40,8 +40,6 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
-
-
 
 # Default front matter
 defaults:
