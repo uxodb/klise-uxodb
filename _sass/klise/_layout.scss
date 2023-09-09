@@ -248,7 +248,7 @@
     align-self: flex-start;
     background-color: #ececec;
     border-radius: 7px;
-    font-family: "Roboto Mono";
+    font-family: $font-date-footer;
     text-align: center;
     box-sizing: content-box;
     
@@ -283,7 +283,7 @@
   margin-bottom: 2em;
   text-align: center;
   font-size: $small-font-size;
-  font-family: $font-date-footer;
+  font-family: 'Trispace', sans-serif;
 
   @include media-query($on-mobile) {
     margin-top: 3em;
