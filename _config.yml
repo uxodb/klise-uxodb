@@ -5,7 +5,7 @@ description: >-
 
 lang: en-US # default lang
 timezone: Europe/Amsterdam # set your timezone
-#image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+image: assets/favicons/android-chrome-192x192.png # This image used for Open Graph more info https://ogp.me/
 #repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
 mode: dark # default theme "dark" | "light"
 
