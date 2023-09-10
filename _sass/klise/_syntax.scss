@@ -9,7 +9,7 @@ code {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  font-size: 13px;
+  font-size: $smaller-font-size;
 //  font-size: inherit;
 
   &.highlighter-rouge {
@@ -45,6 +45,21 @@ pre.highlight, pre {
     display: block;
     border: 0;
   }
+}
+
+[data-label]::before {
+  content: attr(data-label);
+  color: #bbb;
+  background-color: #313e31;
+  font-family: "JetBrains Mono", monospace;
+  font-size: $smaller-font-size;
+  font-weight: bold;
+  border-radius: 2px;
+  border-bottom-style: unset;
+  margin: 0 -27px
+  padding-left: 10px
+  display: block;
+  overflow-x: auto;
 }
 
 .highlight table td { padding: 5px; }
