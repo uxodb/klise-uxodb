@@ -1,6 +1,6 @@
 ---
 title: "Hetzner: Installing Linux"
-date: 2023-09-02
+date: 2023-09-02 23:30:00 +0200
 tags: [unix/linux, cli, ssh, systemctl, hetzner]
 excerpt: How I installed Linux on a Hetzner server.
 ---
@@ -21,7 +21,7 @@ qdLfInM7MxtFxr5KNQe8s9qywkVdrvsLUWGzbb0rQQ8 (ED25519 256)
 CbqGZzPfRnIXE4o8ErsN+2Q4PXSIu9TGMOubpxf66rA (RSA 3072)
 ```
 With this information, we can now log into the server. Using either Putty or a terminal of some sorts, we log into the server with the command: 
-```bash
+```console
 $ ssh root@78.46.174.158
 ```
  It will prompt for the password, so we can copy that in.
@@ -36,7 +36,7 @@ After we do so, we're greeted by Hetzner's Rescue System
 It immediately shows a summary of the system's specs, so the storage, cpu, memory.
 
 From here on, we'll start up Hetzner's tool for installing our OS. We do this by running the installimage binary:
-```bash
+```console
 root@rescue ~ # installimage
 ```
 Then we are presented a menu in which we're given the option to have our preferred distribution installed. Its also possible to provide your own image, but I've decided to go with Archlinux:
@@ -48,7 +48,7 @@ After selecting Archlinux and proceeding, an <abbr title="Midnight Commander's i
 The configuration file serves the purpose of further configuring the server according to our wishes. There are a few options like setting up LVM for your storage, changing the bootloader, etc... In this case we will only make the changes outlined below.
 
 We'll be setting up RAID-0. The RAID settings are:
-```bash
+```
 SWRAID 1
 SWRAIDLEVEL 1
 ```
@@ -128,7 +128,7 @@ Since Hetzner's network is set up with DHCP, theres no need for configuring the 
 ## Making `/tmp` persistent
 Logging in to the server, we'll want to verify the drives have been set up correctly.
 
-```
+```console
 [root@Archlinux ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 dev              16G     0   16G   0% /dev
@@ -140,7 +140,7 @@ tmpfs           3.2G     0  3.2G   0% /run/user/1000
 tmpfs			 16G	 0	 16G   0% /tmp
 ```
 
-```
+```console
 [root@Archlinux .config]$ lsblk
 NAME    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
 sda       8:0    0  3.6T  0 disk
@@ -161,19 +161,19 @@ sdb       8:16   0  3.6T  0 disk
 └─sdb4    8:20   0    1M  0 part
 ```
 It's been set up like we've intended it to, the only change I want to make in this case is the way `/tmp` is mounted. Currently, it's mounted as <abbr title="Temporary File System">tmpfs</abbr> which stores its data in memory. This means all files will vanish after every reboot, and I prefer to prevent this from happening. So, to avoid this, we'll have to make it persistent and I will achieve this by making `/tmp` part of the root filesystem.
-```bash
+```console
 $ systemctl mask tmp.mount
 $ reboot
 ```
 Now to verify it has been masked:
-```
+```console
 [root@Archlinux ~]# systemctl status tmp.mount
 ○ tmp.mount
      Loaded: masked (Reason: Unit tmp.mount is masked.)
      Active: inactive (dead)
 ```
 And we can see `/tmp` has not been initialized with `tmpfs`:
-```
+```console
 [root@ArchBoX ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 dev              16G     0   16G   0% /dev
@@ -185,18 +185,18 @@ tmpfs           3.2G     0  3.2G   0% /run/user/1000
 ```
 ## Setting up the user account and privileges
 Now, it's time to install sudo and set up my user account and grant sudo privileges.
-```bash
+```console
 $ useradd -m -S /bin/bash uxodb
 $ pacman -Syu sudo
 ```
 For sudo priviliges we'll have to edit <a href="https://www.sudo.ws/docs/man/1.8.15/sudoers.man/" target="_blank" rel="noopener">`/etc/sudoers`</a>. Instead of doing this, we will use the drop-in functionality by creating a new file in `/etc/sudoers.d/` with our configuration. I would recommend to do it this way, as for example, changes made to files in this folder remain in place when you upgrade the system. Also if you have many users, I imagine it will be easier to manage.
-```bash
+```console
 $ echo "uxodb ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/uxodb
 ```
 You might not want to use this setting yourself, as it may be an insecure way of granting sudo privileges. This way, you'll never be prompted for a password when using sudo. Use this configuration at your own discretion.
 
 And finally to set a password for this account:
-```bash
+```console
 $ passwd uxodb
 ```
 You will be prompted for a password twice.
@@ -216,7 +216,7 @@ When running ssh-keygen, it will by default create a 3072 bit RSA key pair. In t
 
 Also note that I will **not** be running this on the server we're configuring, but on my <abbr title="Windows Subsystem for Linux">WSL</abbr> shell.
 
-```bash
+```console
 $ ssh-keygen -t rsa -b 4096
 ```
 We are prompted for a few things, and it'll look like this:
@@ -248,7 +248,7 @@ As you can see, we're prompted to enter a filename. If you want, you can simply 
 
 Before we can use the private key to authenticate to the remote host, the public key needs to be copied to the `authorized_keys` file located in `~/.ssh` on the remote host. The easiest way to do this is to make use of the `ssh-copy-id` utility. It will scan our account for the public key `id_rsa.pub` and copy it over to the remote host.
 
-```bash
+```console
 $ ssh-copy-id uxodb@Archlinux
 ```
 It will prompt for the user's password, we use the one we've set earlier.
@@ -264,14 +264,14 @@ Now try logging into the machine, with:   "ssh 'uxodb@Archlinux'"
 and check to make sure that only the key(s) you wanted were added.
 ```
 Now we can try and log into the remote host without using a password and look at the `authorized_keys` file. It should include our public key.
-```bash
+```console
 $ ssh uxodb@Archlinux
 $ cat ~/.ssh/authorized_keys
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDP98LIP1wnXmgQzpD2cgRnj+yCg+z8SODBFVuP0/1T9z2zD+uUsNAgOBBhO+CbRco9q5let/UijfGuKaOPWHPwGGKKcQd4SBlzPIsX+VSX9RMy5ujKyLKPFVods7OLJ9rKHZPZAzVjArfCcpbLV/JOFn3XuE3ciaHZ2DSlBi3GdtdLkwwdpqtjzfqZyAB2opkfOEU1ufGZO6oX6xvsy+9NzsQ0usIPke7hWSOITellx4Cci0sUmlTkJVdb+1TYEoPY8dMv3/fKsH6F6+3kaQ+EfhEhQwiYaHxwN2Ul4hceCzkgyENQbMN4hllh/hu8YmigIOJ2qPfpNRJOrM5fFxPve2K0zr9ElRgAndJ+P57zl9vRtIdzjudM4csWwohmDCx8nR+XcwsvvXtUMGuFXzXOJ7EAhlO/6oIuCQ2qb/syB1ZhOzt8xecok51GQPL9JrVpARkbbBr6JTplnEYjlyUNipTIlWQb5Lk0mbq0bREkSJNTsy20b6Pom+Ay2ZVrRRH1o6MMy+GA9/RQJvvEjzkHA7dTMUXamwbO10FBRNneD3QTWZgaXsMLw58DJg9/gFN05UPLCxXtRmUuLQmL+3Q/BxDmMwnJIjeAGZdBAJicb+LK+LyyzDWTqYpfvr+uE1YbMKl5aTXZ8oXEIpNl2y0lFEQWChiu6sX0WcWl+ofpaw== WSLuser@DESKTOP-81ODF2L
 ```
 Looks like `ssh-copy-id` has done its job.
 If you have multiple keys, and for example multiple hosts you may log in to, it's also possible to specify the key you want to use to authenticate. You can achieve this by using the `-i` option with the `ssh` command, so for example:
-```bash
+```console
 $ ssh -i /home/WSLuser/.ssh/id_rsa uxodb@Archlinux
 ```
 That's it. We can now authenticate to the server with our key and without using a password. Next we will finish configuring SSH.
@@ -281,7 +281,7 @@ That's it. We can now authenticate to the server with our key and without using 
 So, earlier we have generated the SSH keys and set them up for authenticating without a password. We have also granted the user account root privileges by editing `sudoers`. Next, what we'll want to do is disable password authentication and disable logging in to the server with root. We will achieve this by modifying the <a href="https://linux.die.net/man/5/sshd_config" target="_blank" rel="noopener">configuration</a> of <abbr title="OpenSSH Daemon">sshd</abbr>.
 
 To modify the configuration we can use any editor like vim or nano. The location of this file is usually `/etc/ssh/sshd_config`.
-```bash
+```console
 $ sudo nano /etc/ssh/sshd_config
 ```
 Most of the contents, if not all, is usually commented out with the defaults in place. We'll need to look for two options called `PermitRootLogin` and `PasswordAuthentication`. When you find them, it'll probably look like this:
@@ -295,11 +295,11 @@ PermitRootLogin no
 PasswordAuthentication yes
 ```
 After saving the file, the settings still won't be in effect. To apply these settings we have to actually restart sshd.
-```bash
+```console
 $ sudo systemctl restart sshd.service
 ```
 And to see if it has been started up correctly:
-```bash
+```console
 $ sudo systemctl status sshd.service
 ● sshd.service - OpenSSH Daemon
      Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: disabled)
