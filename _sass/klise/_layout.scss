@@ -255,6 +255,8 @@
 
     @include media-query($on-mobile) {
       font-size: 14px;
+      white-space: nowrap; // will keep the size of box, but position it on top
+
     }
   }
 
@@ -265,6 +267,7 @@
     font-size: $base-font-size;
     font-weight: normal;
     letter-spacing: 0.1px;
+//    white-space: nowrap; // will make text go past phone edge
 
     a {
       color: $text-base-color;
