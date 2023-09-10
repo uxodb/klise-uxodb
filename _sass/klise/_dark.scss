@@ -110,8 +110,8 @@ body[data-theme="dark"] {
 
   // Blockquote
   blockquote {
-    color: $dark-gray;
-    border-color: $dark-light;
+    color: $dark-text-link-green-active; // $dark-gray;
+    border-color: $dark-green; $dark-light;
   }
 
   // Strong, Bold
