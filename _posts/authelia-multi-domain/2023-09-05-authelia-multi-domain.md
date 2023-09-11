@@ -63,7 +63,7 @@ networks:
   proxy:
     external: true
 ```
-{: data-label="test.yml"}
+{: data-label="~/docker/authelia/docker-compose.yml"}
 And to use it with another service, you simply add the following label to the container's compose file:
 ```
 - traefik.http.routers.monitor.middlewares=authelia@docker
@@ -89,6 +89,7 @@ session:
       expiration: 3600 # 1 hour
       inactivity: 300 # 5 minutes
 ```
+{: data-label="/srv/authelia/configuration.yml"}
 The access rules are set up, a `bypass` for service1.example.com, meaning there is no need for authentication by Authelia when accessing that domain, and `one_factor` for monitor.example.com which *does* require authentication when accessing it. The cookie's configuration has also been set. What is left is setting up a user account in Authelia, which I wont describe in detail, but I made a new user `uxodb`, generated the password and added it to `users_database.yml`.
 
 Next we start up Authelia with:
