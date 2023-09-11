@@ -60,6 +60,9 @@ pre.highlight, pre {
   padding-left: 10px;
   display: block;
   overflow-x: auto;
+  @include media-query($on-mobile) {
+    margin 0 calc(51% - 51vw);
+    padding-left: 20px;
 }
 
 .highlight table td { padding: 5px; }
