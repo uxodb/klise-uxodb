@@ -96,9 +96,9 @@ Next we start up Authelia with:
 ```console
 $ docker compose up -d
 ```
-## Modifying 
+## Modifications made
 
-After using Authelia for a short while, I came up with an idea. An idea which I thought would simplify stuff more. I decided that instead of adding Authelia as a middleware to all of my services I want to use Authelia with, I could instead add the middleware to my entrypoint in Traefik. This way, every service that sits behind this entrypoint takes advantage of Authelia.
+After using Authelia for a short while, I came up with an idea. An idea which I thought would simplify stuff more. I decided that instead of adding Authelia as a middleware to all of my services I want to use Authelia with, I could add the middleware to my entrypoint in Traefik. This way, every service that sits behind this entrypoint takes advantage of Authelia.
 
 All I had to do is, remove the middleware labels from my services' compose files and in my Traefik config add Authelia as a middleware on the entrypoint:
 ```toml
@@ -113,12 +113,13 @@ All I had to do is, remove the middleware labels from my services' compose files
     [entryPoints.websecure.http]
       middlewares = ["securityHeaders@file", "authelia@docker"] # Adding the Authelia middleware
 ```
+{: data-label="/srv/traefik/data/traefik.toml"}
 Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then restart both Authelia and Traefik, because the entrypoints configuration doesnt reside in Traefik's dynamic config, which is capable of reloading after a change.
 ```console
 $ cd ~/docker/traefik && docker compose up -d --force-recreate traefik
 $ cd ~/docker/authelia && docker compose up -d --force-recreate authelia
 ```
-I went on and tried accessing some of my subdomains to test the rules I set in Authelia's configuration, it all looked good to me. Now, I use Authelia for the domain all of my services are set up with, but one. There is one domain which I don't do much with (yet) but still runs a service. And after 20 minutes I tried accessing the domain but would get an error message. At that moment it dawned upon me that it must be a result of setting up Authelia on the entrypoint, as that service also makes use of the same entrypoint.
+I went on and tried accessing some of my subdomains to test the rules I set in Authelia's configuration, it all looked good to me. Now, I use Authelia with the root domain all of my services are set up with, but one. There is one domain which I didnt use as much but still ran a service. And after 20 minutes I tried accessing the domain but would get an error message. At that moment it dawned upon me that it must be a result of setting up Authelia on the entrypoint, as that service also makes use of the same entrypoint.
 
 ## Looking for a solution
 After what happened before, I immediately went to look for a solution. I tried to find a way to exclude the middleware at router level. I stumbled upon a few posts from the <a href="https://community.traefik.io/t/how-to-overwrite-middleware-headers-attached-to-the-entrypoint/16698" target="_blank" rel="noopener">Traefik forums</a>, <a href="https://www.reddit.com/r/Traefik/comments/hqmpz5/how_to_negateremove_a_default_middleware/" target="_blank" rel="noopener">Reddit,</a> and <a href="https://github.com/traefik/traefik/issues/5630" target="_blank" rel="noopener">Github</a>. Going through all of these pages, it seemed more and more like it was impossible at the moment. A comment on the Github page sparked some hope within me, stating:
@@ -129,5 +130,34 @@ So I tried looking into this some more and eventually found <a href="https://git
 
 And what he said, basically, was that the issue could only be addressed by doing a global refactoring of middlewares instead of adding a new option in the current configuration.
 
-I gave up and stopped looking in Traefik's direction, I didn't completely lose hope yet and continued my search for a solution. Now it was time to look into Authelia's direction. I began searching for some kind of multi domain support.
+I gave up and stopped looking in Traefik's direction, I didn't completely lose hope yet and continued my journey in the search for a solution. 
+
+Now, it was time to look into Authelia's direction. I began searching for some kind of multi domain support and found Authelia's Roadmap, and the <a href="https://www.authelia.com/roadmap/active/multi-domain-protection/" target="_blank" rel="noopener">page</a> which specifically mentions Multi Domain Protection. This was great news, the first of the stages was already done, which was "Decide on a Method". The next stages, "Decide on a Session Library" and "Initial Implementation" were still in progress, and the last stage "SSO Implementation" had not started yet. I notice next to the "in progress" flag under "Initial Implementation", there also is a "v4.38.0" flag. I remembered the version I was on at the moment was 4.37.5
+
+I quickly head over to Authelia's github and look through the <abbr title="Pull Request">PR's</abbr>. I was very happy to find two relevant PR's, the <a href="https://github.com/authelia/authelia/pull/3754" target="_blank" rel="noopener">first</a> is the one implementing multiple domains, and the <a href="https://github.com/authelia/authelia/pull/4296" target="_blank" rel="noopener">second</a> is the one allowing for authz endpoint customization. I'll explain why the latter is important shortly.
+
+These PR's were at the time already pushed to the `master` branch of the project, and the roadmap mentioned `v4.38.0`. While looking into this, I confirmed both PR's were implemented in the beta branch for v4.38.0 called `v4.38.0-beta2` and discovered there even was a docker image with this tag already, making it only easier  for me.
+
+## Implementing the changes
+
+It was time to finally implement these changes in my configuration and I started out by modifying my compose file. This was an easy task, as there really were only two lines in need of an edit:
+
+```yml
+image: authelia/authelia::v4.38.0-beta2 # Replacing the :latest tag
+labels: # Replacing the address
+  - 'traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/authz/forward-auth'
+```
+{: data-label="~/docker/authelia/docker-compose.yml"}
+
+There's something which needs an explanation. The label in my original compose file contains the address to Authelia's portal, like this: `/api/verify?rd=https://auth.${DOMAIN}`. The new label contains no such thing, and here's why: The second PR I mentioned earlier, saying that I would explain why it is important, allows us to customize the endpoint. It really synergizes with the PR for multi domain support.
+
+When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and not redirect requests from `domain2.com` to `auth.domain1.com`. In my first compose file the address was hardcoded in the label, meaning if I were to keep that address in and add my second domain to Authelia, requests to my second domain would redirect to the hardcoded address which contains the initial domain. By leaving out the domain in the label, we now can configure that part in the Authelia configuration instead and that way we can match the domains to the portal. And the latter PR allows us to do so.
+
+The compose file has been modified, next is the Authelia configuration.
+
+```yml
+
+```
+{: data-label="/srv/authelia/configuration.yml"}
+
 
