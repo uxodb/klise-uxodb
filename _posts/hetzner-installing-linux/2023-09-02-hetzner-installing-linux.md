@@ -206,14 +206,11 @@ You might not want to use this setting yourself, as it may be an insecure way of
 And finally to set a password for this account:
 ```console
 # passwd uxodb
-```
-{:data-label="root@Archlinux:~"}
-You will be prompted for a password twice.
-```console
 New password:
 Retype new password:
 passwd: password updated successfully
 ```
+{:data-label="root@Archlinux:~"}
 The user account is now ready and we may proceed on creating our SSH keys.
 
 ## Creating SSH keys for authentication
@@ -256,10 +253,6 @@ Before we can use the private key to authenticate to the remote host, the public
 
 ```console
 $ ssh-copy-id uxodb@Archlinux
-```
-{:data-label="uxodb@home:~"}
-It will prompt for the user's password, we use the one we've set earlier.
-```console
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/uxodb/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
@@ -270,19 +263,22 @@ Number of key(s) added: 1
 Now try logging into the machine, with:   "ssh 'uxodb@Archlinux'"
 and check to make sure that only the key(s) you wanted were added.
 ```
+{:data-label="uxodb@home:~"}
+It prompts for the user's password, so we enter the one we've set earlier.
+
 Now we can try and log into the remote host without using a password and look at the `authorized_keys` file. It should include our public key.
 ```console
 $ ssh uxodb@Archlinux
 $ cat ~/.ssh/authorized_keys
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDP98LIP1wnXmgQzpD2cgRnj+yCg+z8SODBFVuP0/1T9z2zD+uUsNAgOBBhO+CbRco9q5let/UijfGuKaOPWHPwGGKKcQd4SBlzPIsX+VSX9RMy5ujKyLKPFVods7OLJ9rKHZPZAzVjArfCcpbLV/JOFn3XuE3ciaHZ2DSlBi3GdtdLkwwdpqtjzfqZyAB2opkfOEU1ufGZO6oX6xvsy+9NzsQ0usIPke7hWSOITellx4Cci0sUmlTkJVdb+1TYEoPY8dMv3/fKsH6F6+3kaQ+EfhEhQwiYaHxwN2Ul4hceCzkgyENQbMN4hllh/hu8YmigIOJ2qPfpNRJOrM5fFxPve2K0zr9ElRgAndJ+P57zl9vRtIdzjudM4csWwohmDCx8nR+XcwsvvXtUMGuFXzXOJ7EAhlO/6oIuCQ2qb/syB1ZhOzt8xecok51GQPL9JrVpARkbbBr6JTplnEYjlyUNipTIlWQb5Lk0mbq0bREkSJNTsy20b6Pom+Ay2ZVrRRH1o6MMy+GA9/RQJvvEjzkHA7dTMUXamwbO10FBRNneD3QTWZgaXsMLw58DJg9/gFN05UPLCxXtRmUuLQmL+3Q/BxDmMwnJIjeAGZdBAJicb+LK+LyyzDWTqYpfvr+uE1YbMKl5aTXZ8oXEIpNl2y0lFEQWChiu6sX0WcWl+ofpaw== uxodb@home
 ```
-{data-label="uxodb@home:~"}
+{:data-label="uxodb@home:~"}
 Looks like `ssh-copy-id` has done its job.
 If you have multiple keys, and for example multiple hosts you may log in to, it's also possible to specify the key you want to use to authenticate. You can achieve this by using the `-i` option with the `ssh` command, so for example:
 ```console
 $ ssh -i /home/uxodb/.ssh/id_rsa uxodb@Archlinux
 ```
-{data-label="uxodb@home:~"}
+{:data-label="uxodb@home:~"}
 That's it. We can now authenticate to the server with our key and without using a password. Next we will finish configuring SSH.
 
 ## Further configuring of SSH
