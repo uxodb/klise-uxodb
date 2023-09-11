@@ -221,7 +221,7 @@ $ ssh-keygen -t rsa -b 4096
 ```
 We are prompted for a few things, and it'll look like this:
 
-```
+```console
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/WSLuser/.ssh/id_rsa):
 Created directory '/home/WSLuser/.ssh'.
@@ -289,6 +289,7 @@ Most of the contents, if not all, is usually commented out with the defaults in 
 #PermitRootLogin prohibit-password
 #PasswordAuthentication yes
 ```
+{: data-label="/etc/ssh/sshd_config"}
 We will uncomment these lines and change both to `no`.
 ```
 PermitRootLogin no
