@@ -61,7 +61,7 @@ pre.highlight, pre {
   display: block;
   overflow-x: auto;
   @include media-query($on-mobile) {
-    margin 0 calc(51% - 51vw);
+    margin: 0 calc(51% - 51vw);
     padding-left: 20px;
   }
 }
