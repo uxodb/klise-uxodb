@@ -6,7 +6,7 @@
 .author-bio.deco::after {
   content: {{ site.author.deco | prepend: "'" | append: "'" }};
   padding-left: 4px;
-  opacity: 1;
+  color: white;
 }
 
 @import "main"

@@ -227,7 +227,8 @@
 
   .author-bio {
     margin: 0 auto;
-    opacity: 0.9;
+//    opacity: 0.9; in favor of V, for emoji opacity
+    color: rgba(199, 190, 190, 0.9);
     max-width: 393px;
     line-height: 1.688;
   }
