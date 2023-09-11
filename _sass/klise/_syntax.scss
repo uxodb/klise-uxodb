@@ -48,6 +48,7 @@ pre.highlight, pre {
 }
 
 [data-label]::before {
+  //content: "\f368" attr(data-label);
   content: attr(data-label);
   color: #bbb;
   background-color: #313e31;
