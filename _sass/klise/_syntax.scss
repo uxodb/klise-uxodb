@@ -29,7 +29,8 @@ pre.highlight, pre {
     margin: 0 calc(51% - 51vw);
     padding-left: 20px;
   }
-  border: 1px solid rgba(128,128,128,0.1);
+  border: 1px solid rgba(128,128,128,0.2);
+  border-top-style: unset;
   background-color: #212c21; // dg bg
   border-radius: 2px;
   padding: 10px;
@@ -55,10 +56,12 @@ pre.highlight, pre {
   font-family: "JetBrains Mono", monospace;
   font-size: $smaller-font-size;
   font-weight: bold;
-  border-radius: 2px;
-  border-bottom-style: unset;
+  border-radius: 4px 4px 0px 0px; // 4px of 3 of 2 of 8?
+  border: 1px solid rgba(128, 128, 128, 0.2); //0.1 of 0.2 of .15
+//  border-bottom-style: unset; //wel of niet  laatste keer gekeken = niet!
   margin: 0 -27px;
   padding-left: 10px;
+  padding-top: 1px;
   display: block;
   overflow-x: auto;
   @include media-query($on-mobile) {

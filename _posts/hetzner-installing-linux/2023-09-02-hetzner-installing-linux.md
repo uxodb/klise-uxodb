@@ -281,7 +281,7 @@ $ ssh -i /home/uxodb/.ssh/id_rsa uxodb@Archlinux
 {:data-label="uxodb@home:~"}
 That's it. We can now authenticate to the server with our key and without using a password. Next we will finish configuring SSH.
 
-## Further configuring of SSH
+## Configuring SSH
 
 So, earlier we have generated the SSH keys and set them up for authenticating without a password. We have also granted the user account root privileges by editing `sudoers`. Next, what we'll want to do is disable password authentication and disable logging in to the server with root. We will achieve this by modifying the <a href="https://linux.die.net/man/5/sshd_config" target="_blank" rel="noopener">configuration</a> of <abbr title="OpenSSH Daemon">sshd</abbr>.
 

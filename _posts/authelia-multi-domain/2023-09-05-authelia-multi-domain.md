@@ -4,8 +4,6 @@ date: 2023-09-05 23:30:00 +0200
 tags: [unix/linux, authelia, traefik, reverse proxy]
 published: true
 ---
-<i class="fa-solid fa-house"></i>
-
 A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this. 
 
 At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.
@@ -64,7 +62,8 @@ networks:
   proxy:
     external: true
 ```
-{: data-label="~/docker/authelia/docker-compose.yml"}
+{:data-label="~/docker/authelia/docker-compose.yml"}
+
 And to use it with another service, you simply add the following label to the container's compose file:
 ```
 - traefik.http.routers.monitor.middlewares=authelia@docker
