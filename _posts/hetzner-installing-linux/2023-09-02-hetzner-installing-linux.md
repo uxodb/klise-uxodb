@@ -87,7 +87,7 @@ After we're done, we may continue by hitting <kbd>F10</kbd> and choosing `Yes` t
 We'll be greeted by a warning stating that the data on the drives will be deleted, which is to be expected so we, again, continue by choosing `Yes`
 
 Now the script will set up the system according to the previously selected distribution and configuration we edited.
-<div class="topbar terminal"></div>
+<div class="topbar terminal">root@rescue:~</div>
 ```console
 Hetzner Online GmbH - installimage
  
