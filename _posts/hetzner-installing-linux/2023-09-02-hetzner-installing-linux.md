@@ -269,7 +269,7 @@ and check to make sure that only the key(s) you wanted were added.
 It prompts for the user's password, so we enter the one we've set earlier.
 
 Now we can try and log into the remote host without using a password and look at the `authorized_keys` file. It should include our public key.
-<div class="topbar terminal>uxodb@home:~</div>
+<div class="topbar terminal">uxodb@home:~</div>
 ```console
 $ ssh uxodb@Archlinux
 $ cat ~/.ssh/authorized_keys
@@ -277,7 +277,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDP98LIP1wnXmgQzpD2cgRnj+yCg+z8SODBFVuP0/1T
 ```
 Looks like `ssh-copy-id` has done its job.
 If you have multiple keys, and for example multiple hosts you may log in to, it's also possible to specify the key you want to use to authenticate. You can achieve this by using the `-i` option with the `ssh` command, so for example:
-<div class="topbar terminal>uxodb@home:~</div>
+<div class="topbar terminal">uxodb@home:~</div>
 ```console
 $ ssh -i /home/uxodb/.ssh/id_rsa uxodb@Archlinux
 ```
@@ -288,7 +288,7 @@ That's it. We can now authenticate to the server with our key and without using 
 So, earlier we have generated the SSH keys and set them up for authenticating without a password. We have also granted the user account root privileges by editing `sudoers`. Next, what we'll want to do is disable password authentication and disable logging in to the server with root. We will achieve this by modifying the <a href="https://linux.die.net/man/5/sshd_config" target="_blank" rel="noopener">configuration</a> of <abbr title="OpenSSH Daemon">sshd</abbr>.
 
 To modify the configuration we can use any editor like vim or nano. The location of this file is usually `/etc/ssh/sshd_config`.
-<div class="topbar terminal>uxodb@Archlinux:~</div>
+<div class="topbar terminal">uxodb@Archlinux:~</div>
 ```console
 $ sudo nano /etc/ssh/sshd_config
 ```
@@ -305,12 +305,12 @@ PermitRootLogin no
 PasswordAuthentication yes
 ```
 After saving the file, the settings still won't be in effect. To apply these settings we have to actually restart sshd.
-<div class="topbar terminal>uxodb@Archlinux:~</div>
+<div class="topbar terminal">uxodb@Archlinux:~</div>
 ```console
 $ sudo systemctl restart sshd.service
 ```
 And to see if it has been started up correctly:
-<div class="topbar terminal>uxodb@Archlinux:~</div>
+<div class="topbar terminal">uxodb@Archlinux:~</div>
 ```console
 $ systemctl status sshd.service
 ● sshd.service - OpenSSH Daemon
@@ -324,7 +324,7 @@ $ systemctl status sshd.service
              └─463 "sshd: /usr/bin/sshd -D [listener] 0 of 10-100 startups"
 ```
 All looks fine. Logging in as root or with a password instead of the ssh-key should now be disabled. Trying to log in this way fails:
-<div class="topbar terminal>uxodb@newhost:~</div>
+<div class="topbar terminal">uxodb@newhost:~</div>
 ```console
 $ ssh root@Archlinux
 root@Archlinux: Permission denied (publickey).
