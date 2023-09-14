@@ -21,7 +21,7 @@ qdLfInM7MxtFxr5KNQe8s9qywkVdrvsLUWGzbb0rQQ8 (ED25519 256)
 CbqGZzPfRnIXE4o8ErsN+2Q4PXSIu9TGMOubpxf66rA (RSA 3072)
 ```
 With this information, we can now log into the server. Using either Putty or a terminal of some sorts, we log into the server with the command: 
-<div class=topbar terminal">uxodb@home:~</div>
+<div class="topbar terminal">uxodb@home:~</div>
 ```console
 $ ssh root@78.46.174.158
 ```
@@ -37,7 +37,7 @@ After we do so, we're greeted by Hetzner's Rescue System
 It immediately shows a summary of the system's specs, so the storage, cpu, memory.
 
 From here on, we'll start up Hetzner's tool for installing our OS. We do this by running the installimage binary:
-<div class=topbar terminal">root@rescue:~</div>
+<div class="topbar terminal">root@rescue:~</div>
 ```console
 # installimage
 ```
