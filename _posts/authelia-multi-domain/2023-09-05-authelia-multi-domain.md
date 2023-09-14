@@ -64,7 +64,8 @@ networks:
 ```
 
 And to use it with another service, you simply add the following label to the container's compose file:
-```
+<div class="topbar code"></div>
+```yaml
 - traefik.http.routers.monitor.middlewares=authelia@docker
 ```
 We've now configured the `docker-compose.yml` file for Authelia, added it as a middleware to the service, but we also need to set up Authelia's configuration and set the access rules.
