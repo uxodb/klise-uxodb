@@ -26,12 +26,10 @@ code {
 pre.highlight {
   margin: 0 -27px;
   @include media-query($on-mobile) {
-    margin: 0 calc(51% - 51vw);
-//    padding-left: 10px;
+    margin: 0 auto;
   }
   border: 1px solid rgba(128,128,128,0.1);
-//  border-top-style: unset;
-  background-color: #161d1a; // dg bg
+  background-color: #161d1a;
   border-radius: 0px 0px 8px 8px;
   padding: 10px;
   display: block;
@@ -52,7 +50,7 @@ pre.highlight {
   display: block;
   color: #bbb;
   font-family: "JetBrains Mono", monospace;
-  font-size: $smaller-font-size;
+  font-size: $small-font-size;
   background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
   margin: 0 -27px;
  // background-color: #222b27; //#161d1a; //#222b27
@@ -65,24 +63,21 @@ pre.highlight {
   height: 30px;
   line-height: 30px;
   padding-top: 2px;
-  content: attr(data-pc);
+  text-shadow: 3px 3px 1px #000;
   @include media-query($on-mobile) {
-    margin: 0 calc(51% -51vw);
+    margin: 0 auto; //calc(51% -51vw);
   }
 }
 
 .topbar::after {
   font-family: "Font Awesome 6 Free";
   font-size: 12px;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 10px;
   content: "\f111 \f111 \f111";
   position: absolute;
   right: 0;
   opacity: 0.4;
-  @include media-query($on-mobile) {
-    padding-right: 10px;
-  }
 }
 
 .topbar.code::before {
@@ -94,9 +89,6 @@ pre.highlight {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
-  @include media-query($on-mobile) {
-    padding-left: 22px;
-  }
 }
 .topbar.terminal::before {
   font-family: "Font Awesome 6 Free";
@@ -107,9 +99,6 @@ pre.highlight {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
-  @include media-query($on-mobile) {
-    padding-left: 22px;
-  }
 }
 .topbar.text::before {
   font-family: "Font Awesome 6 Free";
@@ -120,9 +109,6 @@ pre.highlight {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
-  @include media-query($on-mobile) {
-    padding-left: 22px;
-  }
 }
 
 pre .lineno {
