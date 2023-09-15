@@ -17,7 +17,7 @@ code {
     position: relative;
     top: -1px;
     background-color: #f6f6f6;
-    border-radius: 2px;
+    border-radius: 5px;
     border: 1px solid rgba(128,128,128,0.1);
   }
 }
@@ -30,9 +30,10 @@ pre.highlight, pre {
     padding-left: 10px;
   }
   border: 1px solid rgba(128,128,128,0.1);
-  border-top-style: unset;
-  background-color: #212c21; // dg bg
+//  border-top-style: unset;
+  background-color: #161d1a; // dg bg
   border-radius: 2px;
+  border-radius: 0px 0px 8px 8px;
   padding: 10px;
   display: block;
   overflow-x: auto;
@@ -53,43 +54,67 @@ pre.highlight, pre {
   color: #bbb;
   font-family: "JetBrains Mono", monospace;
   font-size: $smaller-font-size;
-//  background-color: #313e31;
-  background: rgb(33,44,33);
-  background: linear-gradient(0deg, rgb(49, 62, 49) 10%, rgb(19, 24, 22) 100%);
-//  background: linear-gradient(0deg, rgba(33,44,33,1) 10%, rgba(19,24,22,1) 100%); // Zelfde kleur codeblock naar zwart
+  background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
   margin: 0 -27px;
+ // background-color: #222b27; //#161d1a; //#222b27
   border: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom-style: unset;
   border-radius: 8px 8px 0px 0px;
   padding-left: 10px;
   overflow-x: hidden;
+  text-align: center;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  padding-top: 2px;
+  content: attr(data-pc);
   @include media-query($on-mobile) {
     margin: 0 auto; //calc(51% -51vw);
     padding-left: 10px;
   }
-
-
 }
+
+.topbar::after {
+  font-family: "Font Awesome 6 Free";
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  content: "\f111 \f111 \f111";
+  position: absolute;
+  right: 0;
+  opacity: 0.4;
+}
+
 .topbar.code::before {
   font-family: "Font Awesome 6 Free";
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
-  content: "\f121" "\00a0" "\00a0";
-  display: inline;
+  content: "\f121"; // "\00a0" "\00a0";
+  position: absolute;
+  left: 0;
+  padding-left: 12px;
+  opacity: 0.4;
+
 }
 .topbar.terminal::before {
   font-family: "Font Awesome 6 Free";
-  font-size: 12.5px;
+  font-size: 16px;
   font-weight: bold;
-  content: "\f120" "\00a0" "\00a0";
-  display: inline;
+  content: "\f120";
+  position: absolute;
+  left: 0;
+  padding-left: 12px;
+  opacity: 0.4;
 }
 .topbar.text::before {
   font-family: "Font Awesome 6 Free";
   font-size: 13px;
   font-weight: bold;
-  content: "\f15c" "\00a0"  "\00a0";
-  display: inline;
+  content: "\f15c";
+  position: absolute;
+  left: 0;
+  padding-left: 12px;
+  opacity: 0.4;
 }
 
 .highlight table td { padding: 5px; }

@@ -19,7 +19,7 @@ In my case, the reverse proxy of choice is Traefik. So I run Authelia alongside 
 >Attached to the routers, pieces of middleware are a means of tweaking the requests before they are sent to your service (or before the answer from the services are sent to the clients). There are several available middleware in Traefik, some can modify the request, the headers, some are in charge of redirections, some add authentication, and so on.
 
 Now, most of my services are containerized with Docker, so I start out by writing my compose file, `docker-compose.yml`.
-<div class="topbar code">/srv/docker/authelia/docker-compose.yml</div>
+<div class="topbar code">docker-compose.yml</div>
 ```yaml
 ---
 services:
@@ -71,7 +71,7 @@ And to use it with another service, you simply add the following label to the co
 We've now configured the `docker-compose.yml` file for Authelia, added it as a middleware to the service, but we also need to set up Authelia's configuration and set the access rules.
 
 *I won't go into the entire configuration's possibilities, I will only display the parts I deem necessary for this post. You can find a complete configuration of Authelia on <a href="https://github.com/authelia/authelia" target="_blank" rel="noopener">Github</a>*.
-<div class="topbar code">/srv/authelia/configuration.yml</div>
+<div class="topbar code">configuration.yml</div>
 ```yaml
 access_control:
   default_policy: deny
@@ -93,7 +93,7 @@ session:
 The access rules have been configured, a `bypass` for `service1.example.com`, meaning there is no need for authentication by Authelia when accessing that domain and a `one_factor` for `monitor.example.com`, which *does* require authentication when accessing it. The cookie's configuration has also been set. The only remaining task is to create a user account in Authelia, which I wont describe in detail, but I made a new user `uxodb`, generated the password and added it to `users_database.yml`.
 
 Next, we start up the Authelia container.
-<div class="topbar terminal">uxodb@nozarashi:~/docker/authelia</div>
+<div class="topbar terminal">uxodb@nozarashi</div>
 ```console
 $ docker compose up -d
 [+] Running 1/1
@@ -105,7 +105,7 @@ It seems to work well and the access rules are enforced.
 After using Authelia for a short while, I came up with an idea. An idea which I thought would make it easier on me. I decided that instead of individually adding Authelia as a middleware to each of my services I want to secure, I could add the middleware to my entrypoint in Traefik. This way, every service that sits behind this entrypoint will benefit from Authelia.
 
 All I needed to do is, remove the middleware labels from my services' compose files and within my Traefik configuration add Authelia as a middleware for the entrypoint:
-<div class="topbar code">/srv/traefik/data/traefik.toml</div>
+<div class="topbar code">traefik.toml</div>
 ```toml
 [entryPoints]
   [entryPoints.web]
@@ -119,7 +119,7 @@ All I needed to do is, remove the middleware labels from my services' compose fi
       middlewares = ["securityHeaders@file", "authelia@docker"] # Adding the Authelia middleware
 ```
 Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then, I restart both Authelia and Traefik, because the entrypoints' configuration doesnt reside in Traefik's dynamic configuration, which is capable of hot reloading after a change.
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@nozarashi</div>
 ```console
 $ cd ~/docker/traefik && docker compose up -d --force-recreate traefik
 [+] Running 1/1
@@ -151,8 +151,8 @@ These PR's had already been merged into the `master` branch of the project, and 
 
 It was time to finally implement these changes in my configuration and I started out by modifying my compose file. This was an 
 easy task, as really only two lines had to be modified.
-<div class="topbar code">~/docker/authelia/docker-compose.yml</div>
-```yml
+<div class="topbar code">docker-compose.yml</div>
+```yaml
 image: authelia/authelia::v4.38.0-beta2 # Replacing the :latest tag
 labels: # Replacing the address
   - 'traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/authz/forward-auth'
@@ -174,8 +174,8 @@ As you can see the label which has the portal's address hardcoded in is commente
 When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and avoid redirecting requests from `domain2.com` to `auth.example.com`. In my initial compose file the address was hardcoded in the label, meaning if I were to keep that address in and add my second domain to Authelia, requests to my second domain would redirect to the hardcoded address which contains the initial domain. By leaving out the domain in the label, as is suggested in the previous quote,  we now can configure that part in the Authelia configuration instead and that way we can match the domains to the portal.
 
 Having modified the compose file, next is the Authelia configuration.
-<div class="topbar code">/srv/authelia/configuration.yml</div>
-```yml
+<div class="topbar code">configuration.yml</div>
+```yaml
 
 ```
 
