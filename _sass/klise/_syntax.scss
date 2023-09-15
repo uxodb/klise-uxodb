@@ -33,6 +33,7 @@ pre.highlight {
 //  border-top-style: unset;
   background-color: #161d1a; // dg bg
   border-radius: 0px 0px 8px 8px;
+  padding: 10px;
   display: block;
   overflow-x: auto;
 
@@ -115,7 +116,19 @@ pre.highlight {
   opacity: 0.4;
 }
 
-.highlight table pre { margin: 0; }
+pre .lineno {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.highlight table pre { 
+  margin: 0; 
+  font-family: "JetBrains Mono", monospace;
+  padding-right: 10px;
+}
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
 //  color: #75715e;
   color: #b870ff;
