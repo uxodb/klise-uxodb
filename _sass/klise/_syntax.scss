@@ -23,11 +23,11 @@ code {
 }
 
 // Codeblock Theme
-pre.highlight, pre {
+pre.highlight {
   margin: 0 -27px;
   @include media-query($on-mobile) {
-    margin: 0 auto; //calc(51% - 51vw);
-    padding-left: 10px;
+    margin: 0 calc(51% - 51vw);
+//    padding-left: 10px;
   }
   border: 1px solid rgba(128,128,128,0.1);
 //  border-top-style: unset;
@@ -59,7 +59,6 @@ pre.highlight, pre {
   border: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom-style: unset;
   border-radius: 8px 8px 0px 0px;
-  padding-left: 10px;
   overflow-x: hidden;
   text-align: center;
   position: relative;
@@ -68,8 +67,7 @@ pre.highlight, pre {
   padding-top: 2px;
   content: attr(data-pc);
   @include media-query($on-mobile) {
-    margin: 0 auto; //calc(51% -51vw);
-    padding-left: 10px;
+    margin: 0 calc(51% -51vw);
   }
 }
 
@@ -82,6 +80,9 @@ pre.highlight, pre {
   position: absolute;
   right: 0;
   opacity: 0.4;
+  @include media-query($on-mobile) {
+    padding-right: 10px;
+  }
 }
 
 .topbar.code::before {
@@ -93,7 +94,9 @@ pre.highlight, pre {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
-
+  @include media-query($on-mobile) {
+    padding-left: 22px;
+  }
 }
 .topbar.terminal::before {
   font-family: "Font Awesome 6 Free";
@@ -104,6 +107,9 @@ pre.highlight, pre {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
+  @include media-query($on-mobile) {
+    padding-left: 22px;
+  }
 }
 .topbar.text::before {
   font-family: "Font Awesome 6 Free";
@@ -114,10 +120,24 @@ pre.highlight, pre {
   left: 0;
   padding-left: 12px;
   opacity: 0.4;
+  @include media-query($on-mobile) {
+    padding-left: 22px;
+  }
 }
 
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
+pre .lineno {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.highlight table pre { 
+  margin: 0; 
+  font-family: "JetBrains Mono", monospace;
+  padding-right: 10px;
+}
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
 //  color: #75715e;
   color: #b870ff;

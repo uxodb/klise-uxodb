@@ -322,10 +322,8 @@ sup {
 }
 
 table {
-  width: 100%;
-  margin-top: $spacing-half;
   border-collapse: collapse;
-  font-size: $small-font-size;
+  font-size: $smaller-font-size;
 
   thead {
     font-weight: $bold-weight;
@@ -336,8 +334,6 @@ table {
   th,
   td,
   tr {
-    border: 1px solid $light;
-    padding: 2px 7px;
   }
 }
 
