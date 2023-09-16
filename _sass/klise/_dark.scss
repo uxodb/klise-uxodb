@@ -138,7 +138,7 @@ body[data-theme="dark"] {
         color: $dark-white;
       }
       @include media-query($on-mobile) {
-        background-color: $dark-black;
+        background-color: $dark-green-bg;
         border-color: $dark-light;
 
         .menu-icon {
@@ -148,7 +148,7 @@ body[data-theme="dark"] {
         }
 
         input[type="checkbox"]:checked ~ .trigger {
-          background: $dark-black;
+          background: $dark-green-bg;
         }
       }
     }
@@ -197,12 +197,6 @@ body[data-theme="dark"] {
 
       .nav-arrow {
         color: $dark-gray;
-      }
-    }
-
-    @include media-query($on-mobile) {
-      .post-nav-item:nth-child(even) {
-        border-color: $dark-light;
       }
     }
   }
