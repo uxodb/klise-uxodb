@@ -209,16 +209,12 @@ a.post-nav-link {
 
     .post-title {
       color: $black;
-    }
-
-    &:hover,
-    &:focus {
-      .post-title {
-        color: $text-link-blue-active;
-        opacity: 0.9;
+      &:hover,
+      &:focus {
+          color: $text-link-blue-active;
+          opacity: 0.9;
       }
     }
-
     .nav-arrow {
       font-weight: $normal-weight;
       font-size: $small-font-size;
