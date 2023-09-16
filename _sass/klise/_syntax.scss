@@ -67,6 +67,7 @@ pre.highlight {
   line-height: 30px;
   padding-top: 2px;
   text-shadow: 3px 3px 1px #000;
+  letter-spacing: 1px;
   @include media-query($on-mobile) {
     margin: 0 auto; //calc(51% -51vw);
   }
