@@ -124,6 +124,7 @@ body[data-theme="dark"] {
   // Navbar
   .navbar {
     border-color: $dark-light;
+    background-color: $dark-green-bg;
     .menu {
       a#mode {
         .mode-sunny {

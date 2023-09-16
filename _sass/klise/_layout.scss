@@ -3,14 +3,23 @@
   height: auto;
   max-width: calc(#{$wide-size} - (#{$spacing-full} * 2));
   max-width: -webkit-calc(#{$wide-size} - (#{$spacing-full} * 2));
-  position: relative;
   margin-right: auto;
   margin-left: auto;
   border-bottom: 1px solid $light;
   padding: $spacing-full - 15px $spacing-full;
   @extend %clearfix;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: $white;
 }
-
+div.spacer {
+  height: 67px;
+  position: static;
+}
+  
 // Navigation
 .menu {
   user-select: none;
