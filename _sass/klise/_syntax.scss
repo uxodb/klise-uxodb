@@ -27,14 +27,17 @@ pre.highlight {
   margin: 0 -27px;
   @include media-query($on-mobile) {
     margin: 0 auto;
+    overflow-x: auto;
   }
   border: 1px solid rgba(128,128,128,0.1);
   background-color: #161d1a;
   border-radius: 0px 0px 8px 8px;
   padding: 10px;
   display: block;
-  overflow-x: auto;
-
+  overflow-x: hidden;
+  &:hover {
+    overflow-x: auto;
+  }    
   > code {
     width: 100%;
     max-width: 50rem;
@@ -67,17 +70,16 @@ pre.highlight {
   @include media-query($on-mobile) {
     margin: 0 auto; //calc(51% -51vw);
   }
-}
-
-.topbar::after {
-  font-family: "Font Awesome 6 Free";
-  font-size: 12px;
-  font-weight: normal;
-  letter-spacing: 10px;
-  content: "\f111 \f111 \f111";
-  position: absolute;
-  right: 0;
-  opacity: 0.4;
+  &::after {
+    font-family: "Font Awesome 6 Free";
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 10px;
+    content: "\f111 \f111 \f111";
+    position: absolute;
+    right: 0;
+    opacity: 0.4;
+  }
 }
 
 .topbar.code::before {
@@ -117,6 +119,7 @@ pre .lineno {
   -khtml-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  color: #a9bcb3;
 }
 
 .highlight table pre { 
