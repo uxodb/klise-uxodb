@@ -170,7 +170,7 @@ body[data-theme="dark"] {
         color: $dark-text-base-color;
 
         &:hover,
-        &focus {
+        &:focus {
           color: $dark-white;
         }
       }
@@ -187,15 +187,12 @@ body[data-theme="dark"] {
       .post-title {
         color: $dark-white;
         opacity: 0.9;
-      }
-
-      &:hover,
-      &:focus {
-        .post-title {
-          color: $dark-text-link-green-active;
+      
+        &:hover,
+        &:focus {
+          color: $dark-text-link-green;
         }
       }
-
       .nav-arrow {
         color: $dark-gray;
       }

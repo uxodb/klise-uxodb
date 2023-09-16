@@ -191,6 +191,10 @@
   }
 }
 
+a.post-nav-link {
+  text-decoration: none;  
+}
+
 .post-nav {
   display: flex;
   position: relative;
@@ -224,7 +228,6 @@
 
     width: 50%;
     padding-top: 10px;
-    text-decoration: none;
     box-sizing: border-box;
 
     &:nth-child(odd) {

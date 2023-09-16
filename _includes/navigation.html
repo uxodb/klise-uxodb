@@ -2,7 +2,7 @@
   <div class="post-nav-item post-nav-prev">
     {% if page.previous %}
     <div class="nav-arrow">Previous</div>
-    <a href="{{ page.previous | relative_url }}">
+    <a class="post-nav-link" href="{{ page.previous | relative_url }}">
       <span class="post-title">{{ page.previous.title }}</span>
     </a>
     {% endif %}
@@ -11,7 +11,7 @@
   <div class="post-nav-item post-nav-next">
     {% if page.next %}
     <div class="nav-arrow">Next</div>
-    <a href="{{ page.next | relative_url }}">
+    <a class="post-nav-link" href="{{ page.next | relative_url }}">
       <span class="post-title">{{ page.next.title }}</span>
     </a>
     {% endif %}
