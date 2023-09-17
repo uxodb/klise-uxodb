@@ -35,9 +35,12 @@ pre.highlight {
   padding: 10px;
   display: block;
   overflow-x: hidden;
+  @media screen and (max-width: $on-mobile) and (orientation: landscape) {
+    overflow-x: auto;
+  }
   &:hover {
     overflow-x: auto;
-  }    
+  }
   > code {
     width: 100%;
     max-width: 50rem;
@@ -69,7 +72,7 @@ pre.highlight {
   text-shadow: 3px 3px 1px #000;
   letter-spacing: 1px;
   @include media-query($on-mobile) {
-    margin: 0 auto; //calc(51% -51vw);
+    margin: 0 auto; //calc(50% -50vw);
   }
   &::after {
     font-family: "Font Awesome 6 Free";
