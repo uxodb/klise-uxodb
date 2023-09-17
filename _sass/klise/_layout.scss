@@ -296,8 +296,10 @@ div.spacer {
     letter-spacing: 0.1px;
     white-space: nowrap;
     @include media-query($on-mobile) {
-      white-space: unset;
+//      white-space: unset;
+      overflow: hidden;
       letter-spacing: unset;
+      text-overflow: ellipsis;
     }
 
     a {
