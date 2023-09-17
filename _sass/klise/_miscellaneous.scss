@@ -1,7 +1,7 @@
 // Animation fade-in
 @keyframes fadein {
   0% {
-    opacity: 0.2;
+    opacity: 0;
   }
 
   100% {
@@ -12,11 +12,22 @@
 // Animation blur
 @keyframes blur {
   0% {
-    filter: blur(0px);
+    filter: blur(4px);
   }
 
   100% {
     filter: blur(4px);
+  }
+}
+
+// Animation fade-in avatar
+@keyframes avafadein {
+  0% {
+    opacity: 1;
+  }
+ 
+  100% {
+    opacity: 1;
   }
 }
 
