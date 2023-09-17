@@ -237,7 +237,7 @@ div.spacer {
   .author-bio {
     margin: 0 auto;
 //    opacity: 0.9; in favor of V, for emoji opacity
-    color: rgba(199, 190, 190, 0.9);
+//    color: rgba(199, 190, 190, 0.9);
     max-width: 393px;
     line-height: 1.688;
   }
@@ -255,8 +255,7 @@ div.spacer {
 // List of posts
 .post-item {
   display: flex;
-  padding-top: 5px;
-  padding-bottom: 3px; // halve and add margin of same value on title
+  padding: 5px 0;
   @extend %clearfix;
 
   &:not(:first-child) {
@@ -264,13 +263,10 @@ div.spacer {
   }
 
   .post-item-date {
-    min-width: 96px;
+    min-width: 101px; //min-width
     color: $light-date-footer;
     font-weight: 400;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 1px; // halve padding add it to bottom
-    padding-bottom: 1px;
+    padding: 1px 10px;
     margin-right: 10px;
     margin-top: 2px;
     font-size: $small-font-size;
@@ -279,10 +275,10 @@ div.spacer {
     border-radius: 3px;
     font-family: $font-date-footer;
     text-align: center;
-    box-sizing: content-box;
-    
+    box-sizing: content-box;    
 
     @include media-query($on-mobile) {
+      margin-top: unset;
       align-self: center; //positions it in center
       font-size: $small-font-size;
       white-space: nowrap; // will keep the size of box, but position it on top
@@ -298,7 +294,11 @@ div.spacer {
     font-size: $base-font-size;
     font-weight: normal;
     letter-spacing: 0.1px;
-//    white-space: nowrap; // will make text go past phone edge
+    white-space: nowrap;
+    @include media-query($on-mobile) {
+      white-space: unset;
+      letter-spacing: unset;
+    }
 
     a {
       color: $text-base-color;
