@@ -157,11 +157,10 @@
       &::before {
         content: "#";
         position: absolute;
-        right: -3px;
+        right: 5px;
         width: 1em;
-        margin-top: 4px;
         font-weight: $bold-weight;
-        font-size: 18px; //#c08cff
+        font-size: 17px; //#c08cff
         font-family: "Font Awesome 6 Free"
       }
     }
