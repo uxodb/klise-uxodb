@@ -53,11 +53,12 @@ body[data-theme="dark"] {
     h5,
     h6 {
       .anchor-head {
-        color: #c08cff;
+        color: #e6cbb3;
         text-shadow: 3px 3px 1px #000;
         
         &:hover {
-          color: #5c00cc;
+          color: rgba(0, 0, 0, 0);
+          text-shadow: 1px 1px 0px #e6cbb3;
         }
       }
     }

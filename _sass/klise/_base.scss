@@ -349,8 +349,8 @@ table {
 // When mouse block a text set this color
 mark,
 ::selection {
-  background: #e6cbb3;
-  color: $black;
+  background: #e6cbb3; 
+  color: $dark-green-bg;
 }
 
 // Github Gist clear border
