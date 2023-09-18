@@ -8,6 +8,15 @@
   </small>
 </footer>
 <script src="/assets/js/main.js" defer="defer"></script>
+<script src="/assets/js/clipboard.min.js"></script>
+<script type="text/javascript">
+  var url = document.location.href
+  new ClipboardJS('.anchor-head', {
+    text: function (trigger) {
+      return url
+    }
+  });
+</script>
 {%- if site.google_analytics -%}
   <!-- Google tag (gtag.js) -->
   <script
