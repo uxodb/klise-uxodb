@@ -158,7 +158,7 @@ labels: # Replacing the address
   - 'traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/authz/forward-auth'
 ```
 
-The last line needs an explanation. The label in my original compose file contains the address to Authelia's portal, like this: `/api/verify?rd=https://auth.${DOMAIN}`. The new label omits this part, and here's why: The second PR I mentioned earlier, the one I promised to explain the importance of, allows us to customize the endpoint. It really synergizes with the PR for multi domain support.
+The last line needs an explanation. The label in my original compose file contains the address to Authelia's portal, like this: `/api/verify?rd=https://auth.${DOMAIN}`. The new label omits this part, and here's why: the second PR I mentioned earlier, the one I promised to explain the importance of, allows us to customize the endpoint. It really synergizes with the PR for multi domain support.
 
 I discovered how this worked only after reading the comment in the compose example displayed on this <a href="https://63d0d5401d3c4f000924ea89--authelia-staging.netlify.app/integration/proxies/traefik/" target="_blank" rel="noopener">*Deploy Preview*</a> page. If you expand the first `docker-compose.yml` example, it specifically states:
 > The following commented line is for configuring the Authelia URL in the proxy. We strongly suggest this is configured in the Session Cookies section of the Authelia configuration.
