@@ -178,6 +178,8 @@
 
   h2 {
     @include relative-font-size(1.375);
+    position: relative;
+    line-height: 41px;
   }
 
   h3 {
