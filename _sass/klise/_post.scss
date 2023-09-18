@@ -151,7 +151,7 @@
 
     .anchor-head {
       position: relative;
-      opacity: 0;
+      opacity: 1;
       outline: none;
 
       &::before {
@@ -159,7 +159,10 @@
         position: absolute;
         right: -3px;
         width: 1em;
+        margin-top: 4px;
         font-weight: $bold-weight;
+        font-size: 18px; //#c08cff
+        font-family: "Font Awesome 6 Free"
       }
     }
   }

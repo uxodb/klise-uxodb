@@ -9,6 +9,7 @@ body[data-theme="dark"] {
   h5,
   h6 {
     color: $dark-white;
+    text-shadow: 2px 2px 1px #000;
   }
 
   // Table
@@ -52,7 +53,12 @@ body[data-theme="dark"] {
     h5,
     h6 {
       .anchor-head {
-        color: $dark-text-link-green;
+        color: #c08cff;
+        text-shadow: 3px 3px 1px #000;
+        
+        &:hover {
+          color: #5c00cc;
+        }
       }
     }
   }
