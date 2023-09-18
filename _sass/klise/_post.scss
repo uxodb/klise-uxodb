@@ -142,20 +142,19 @@
     margin-top: $spacing-full;
     margin-bottom: 0;
 
-    &:hover {
-      .anchor-head {
-        color: $text-link-blue;
-        opacity: 1;
-      }
-    }
-
     .anchor-head {
       position: relative;
       opacity: 1;
+      color: $text-link-blue;
+      text-shadow: 1px 1px 2px #000;
       outline: none;
       @include media-query($on-mobile) {
         display: block;
         text-align: right;
+      }
+      &:hover {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 1px 1px 0px $text-link-blue;
       }
       &::before {
         content: "#";
