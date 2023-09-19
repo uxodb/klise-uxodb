@@ -124,6 +124,10 @@ pre .lineno {
 div.highlight pre.highlight table.rouge-table {
   overflow-x:auto;
   display:block;
+  @include media-query($on-mobile) {
+    overflow-x: auto;
+    display: unset;
+  }
 }
 
 .highlight table pre { 
