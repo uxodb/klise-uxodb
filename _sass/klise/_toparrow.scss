@@ -10,6 +10,7 @@
   height: 2.75rem;
   display: inline-block;
   opacity: 0;
+  outline: none;
   -moz-transform: translate3d(0);
   -webkit-transform: translate3d(0);
   -ms-transform: translate3d(0);
@@ -37,7 +38,7 @@
     transition: transform .4s ease-out;
   }
   .fa-angle-up {
-  color: $gray;
+  color: #e6cbb3;
   width: 2.75rem;
   text-align: center;
   position: relative;
