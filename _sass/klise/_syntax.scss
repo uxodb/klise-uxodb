@@ -1,6 +1,5 @@
 // Code
 code {
-//  font-family: $mono-family;
   font-family: "JetBrains Mono", monospace;
   text-rendering: optimizeLegibility;
   font-feature-settings: "calt" 1;
@@ -10,7 +9,6 @@ code {
   word-break: normal;
   word-wrap: normal;
   font-size: $smaller-font-size;
-//  font-size: inherit;
 
   &.highlighter-rouge {
     padding: 1px 3px;
@@ -34,7 +32,6 @@ pre.highlight {
   border-radius: 0px 0px 8px 8px;
   padding: 10px;
   display: block;
-//  @media screen and (max-width: $on-mobile) and (orientation: landscape) {
 
   > code {
     width: 100%;
@@ -132,23 +129,15 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
   }
 }
 
-//.highlight table pre { 
-//  margin: 0; 
-//  font-family: "JetBrains Mono", monospace;
-//  padding-right: 10px;
-//}
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
-//  color: #75715e;
   color: #b870ff;
   font-style: italic;
 }
 .highlight .cm {
-//  color: #75715e;
   color: #b870ff;
   font-style: italic;
 }
 .highlight .c1 {
-// color: #75715e; in favor of V
   color: #b870ff;
   font-style: italic;
 }
