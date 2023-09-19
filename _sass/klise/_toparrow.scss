@@ -1,7 +1,6 @@
 .button#scrolltop {
   position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
+  bottom: 50px;
   border: 2px solid rgba(230, 203, 179, 0.2);
   border-radius: 100%;
   font-size: 23px;
@@ -17,14 +16,14 @@
   -o-transform: translate3d(0);
   transform: translate3d(0);
   @include media-query($on-mobile) {
-    right: 0;
-    margin-bottom: unset;
+    right: 1rem;
+    bottom: 4rem;
   }
-  -moz-transition: opacity .6s ease-out, transform .4s linear;
-  -webkit-transition: opacity .6s ease-out, transform .4s linear;
-  -ms-transition: opacity .6s ease-out, transform .4s linear;
-  -o-transition: opacity .6s ease-out, transform .4s linear;
-  transition: opacity .6s ease-out, transform .4s linear;
+  -moz-transition: opacity 0.6s ease-out, transform .4s linear;
+  -webkit-transition: opacity 0.6s ease-out, transform .4s linear;
+  -ms-transition: opacity 0.6s ease-out, transform .4s linear;
+  -o-transition: opacity 0.6s ease-out, transform .4s linear;
+  transition: opacity 0.6s ease-out, transform .4s linear;
   &:hover {
     -moz-transform: translate3d(0,-5px,0);
     -webkit-transform: translate3d(0,-5px,0);
