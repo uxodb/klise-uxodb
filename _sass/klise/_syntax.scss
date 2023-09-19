@@ -114,10 +114,10 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
     font-family: "JetBrains Mono", monospace;
   }
   td.rouge-gutter {
-    border-right: 1px solid rgba(230, 203, 179, 1);
+    border-right: 1px solid rgba(169, 188, 179, 0.4);
     border-style: dotted;
     pre.lineno {
-      color: rgba(230, 203, 179, 1);
+      color: #a9bcb3;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -khtml-user-select: none;
