@@ -54,7 +54,6 @@ pre.highlight {
   font-size: $small-font-size;
   background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
   margin: 0 -27px;
- // background-color: #222b27; //#161d1a; //#222b27
   border: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom-style: unset;
   border-radius: 8px 8px 0px 0px;
@@ -79,63 +78,63 @@ pre.highlight {
     right: 0;
     opacity: 0.4;
   }
+  &.code, &.terminal, &.text {
+    &::before {
+      font-family: "Font Awesome 6 Free";
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 16px;
+      padding-left: 12px;
+      opacity: 0.4;
+    }
+  }
+  &.code::before {
+    content: "\f121";
+  }
+  &.terminal::before {
+    content: "\f120";
+  }
+  &.text::before {
+    font-size: 13px;
+    content: "\f15c";
+  }
 }
 
-.topbar.code::before {
-  font-family: "Font Awesome 6 Free";
-  font-size: 16px;
-  font-weight: bold;
-  content: "\f121"; // "\00a0" "\00a0";
-  position: absolute;
-  left: 0;
-  padding-left: 12px;
-  opacity: 0.4;
-}
-.topbar.terminal::before {
-  font-family: "Font Awesome 6 Free";
-  font-size: 16px;
-  font-weight: bold;
-  content: "\f120";
-  position: absolute;
-  left: 0;
-  padding-left: 12px;
-  opacity: 0.4;
-}
-.topbar.text::before {
-  font-family: "Font Awesome 6 Free";
-  font-size: 13px;
-  font-weight: bold;
-  content: "\f15c";
-  position: absolute;
-  left: 0;
-  padding-left: 12px;
-  opacity: 0.4;
-}
 
-pre .lineno {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  color: #a9bcb3;
-}
-
-div.highlight pre.highlight table.rouge-table {
-  overflow-x:auto;
-  display:block;
+div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
+  overflow-x: auto;
+  display: block;
   @include media-query($on-mobile) {
     overflow-x: auto;
     display: unset;
   }
+  pre {
+    margin: 0;
+    padding-right: 10px;
+    font-family: "JetBrains Mono", monospace;
+  }
+  td.rouge-gutter {
+    border-right: 1px solid rgba(230, 203, 179, 0.5);
+    pre .lineno {
+      color: rgba(230, 203, 179, 1);
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  }
+  td.rouge-code pre {
+    padding-left: 10px;
+  }
 }
 
-.highlight table pre { 
-  margin: 0; 
-  font-family: "JetBrains Mono", monospace;
-  padding-right: 10px;
-  
-}
+//.highlight table pre { 
+//  margin: 0; 
+//  font-family: "JetBrains Mono", monospace;
+//  padding-right: 10px;
+//}
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
 //  color: #75715e;
   color: #b870ff;
