@@ -19,8 +19,11 @@
   padding: 0 10px;
   display: block;
   opacity: 0;
-  transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s linear;
   .fa-angle-up {
   color: #e6cbb3
   }
+  @include media-query($on-mobile) {
+    margin: 0;
+  }    
 }
