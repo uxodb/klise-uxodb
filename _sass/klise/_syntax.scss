@@ -51,6 +51,9 @@ pre.highlight {
     border: 0;
   }
 }
+div.highlight pre.highlight table.rouge-table {
+  overflow-x:  auto;
+}
 
 .topbar {
   display: block;
