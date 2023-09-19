@@ -5,7 +5,6 @@
   border: 2px solid rgba(230, 203, 179, 0.2);
   border-radius: 100%;
   font-size: 23px;
-//  background-color: #2f2b2b;
   box-shadow: 1px 5px 6px 0px #000;
   width: 2.75rem;
   height: 2.75rem;
@@ -20,11 +19,11 @@
     right: 0;
     margin-bottom: unset;
   }
-  -moz-transition: opacity .6s ease-out;
-  -webkit-transition: opacity .6s ease-out;
-  -ms-transition: opacity .6s ease-out;
-  -o-transition: opacity .6s ease-out;
-  transition: opacity .6s ease-out;
+  -moz-transition: opacity .6s ease-out, transform .4s linear;
+  -webkit-transition: opacity .6s ease-out, transform .4s linear;
+  -ms-transition: opacity .6s ease-out, transform .4s linear;
+  -o-transition: opacity .6s ease-out, transform .4s linear;
+  transition: opacity .6s ease-out, transform .4s linear;
   &:hover {
     -moz-transform: translate3d(0,-5px,0);
     -webkit-transform: translate3d(0,-5px,0);
@@ -35,7 +34,7 @@
     -webkit-transition: transform .4s ease-out;
     -ms-transition: transform .4s ease-out;;
     -o-transition: transform .4s ease-out;
-    transition: transform .6s ease-out;
+    transition: transform .4s ease-out;
   }
   .fa-angle-up {
   color: $gray;
