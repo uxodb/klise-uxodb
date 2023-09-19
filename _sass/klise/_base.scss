@@ -14,7 +14,11 @@
   -o-transition: none;
   transition: none;
 }
-
+// non-permanent solution for fixed navbar. spacing page-content
+div.spacer {
+  height: 67px;
+  position: relative;
+}
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
