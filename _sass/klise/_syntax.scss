@@ -114,8 +114,9 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
     font-family: "JetBrains Mono", monospace;
   }
   td.rouge-gutter {
-    border-right: 1px solid rgba(230, 203, 179, 0.5);
-    pre .lineno {
+    border-right: 1px solid rgba(230, 203, 179, 1);
+    border-style: dotted;
+    pre.lineno {
       color: rgba(230, 203, 179, 1);
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -125,7 +126,7 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
     }
   }
   td.rouge-code pre {
-    padding-left: 10px;
+    padding-left: 5px;
   }
 }
 
