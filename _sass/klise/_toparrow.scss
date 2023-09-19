@@ -1,22 +1,73 @@
-//#arrow.toparrow {
-#arrow {
+.button#scrolltop {
   position: fixed;
   bottom: 0;
-  right: 0;
-  margin: 5em 25%;
-  border: 2px solid #4f4f4f;
+  margin-bottom: 50px;
+  border: 2px solid rgba(230, 203, 179, 0.2);
   border-radius: 100%;
   font-size: 23px;
-  background-color:  #2f2b2b;
+//  background-color: #2f2b2b;
   box-shadow: 1px 5px 6px 0px #000;
-  padding: 0 10px;
-  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-block;
   opacity: 0;
-  transition: opacity 0.6s ease-out;
-  .fa-angle-up {
-  color: #e6cbb3
-  }
+  -moz-transform: translate3d(0);
+  -webkit-transform: translate3d(0);
+  -ms-transform: translate3d(0);
+  -o-transform: translate3d(0);
+  transform: translate3d(0);
   @include media-query($on-mobile) {
-    margin: 0;
-  }    
+    right: 0;
+    margin-bottom: unset;
+  }
+  -moz-transition: opacity .6s ease-out;
+  -webkit-transition: opacity .6s ease-out;
+  -ms-transition: opacity .6s ease-out;
+  -o-transition: opacity .6s ease-out;
+  transition: opacity .6s ease-out;
+  &:hover {
+    -moz-transform: translate3d(0,-5px,0);
+    -webkit-transform: translate3d(0,-5px,0);
+    -ms-transform: translate3d(0,-5px,0);
+    -o-transform: translate3d(0,-5px,0);
+    transform: translate3d(0,-5px,0);
+    -moz-transition: transform .4s ease-out;
+    -webkit-transition: transform .4s ease-out;
+    -ms-transition: transform .4s ease-out;;
+    -o-transition: transform .4s ease-out;
+    transition: transform .6s ease-out;
+  }
+  .fa-angle-up {
+  color: $gray;
+  width: 2.75rem;
+  text-align: center;
+  position: relative;
+  padding-top: 11px;
+  }
+}
+
+@media (min-width: 768px) { //1650 1400
+  .button#scrolltop {
+    right: 5vw;
+  }
+}
+@media (min-width: 1401px) {
+  .button#scrolltop {
+    right: 10vw;
+  }
+}
+@media (min-width: 1681px) {
+  .button#scrolltop {
+    right: 20vw;
+  }
+}
+@media (min-width: 1921px) {
+  .button#scrolltop {
+    right: 25vw;
+  }
+}
+@media (min-width: 2561px) {
+  .button#scrolltop {
+    right: 35vw
+  }
 }
