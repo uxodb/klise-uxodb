@@ -34,13 +34,8 @@ pre.highlight {
   border-radius: 0px 0px 8px 8px;
   padding: 10px;
   display: block;
-  overflow-x: hidden;
-  @media screen and (max-width: $on-mobile) and (orientation: landscape) {
-    overflow-x: auto;
-  }
-  &:hover {
-    overflow-x: auto;
-  }
+//  @media screen and (max-width: $on-mobile) and (orientation: landscape) {
+
   > code {
     width: 100%;
     max-width: 50rem;
@@ -126,10 +121,16 @@ pre .lineno {
   color: #a9bcb3;
 }
 
+div.highlight pre.highlight table.rouge-table {
+  overflow-x:auto;
+  display:block;
+}
+
 .highlight table pre { 
   margin: 0; 
   font-family: "JetBrains Mono", monospace;
   padding-right: 10px;
+  
 }
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
 //  color: #75715e;
