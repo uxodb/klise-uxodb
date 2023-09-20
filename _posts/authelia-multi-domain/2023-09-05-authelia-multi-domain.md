@@ -1,8 +1,9 @@
 ---
 title: "Multi Domain Protection with Authelia"
-date: 2023-09-05 23:30:00 +0200
-tags: [unix/linux, authelia, traefik, reverse proxy]
+date: 2023-09-19 23:59:00 +0200
+tags: [unix/linux, authelia, traefik, reverse proxy, docker, yaml, cli, ssh]
 published: true
+categories: testcat
 ---
 A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this. 
 
@@ -15,7 +16,7 @@ Authelia acts as a companion for reverse proxies, it's responsible for evaluatin
 <figcaption>Authelia working with the reverse proxy to evaluate the incoming request. </figcaption>
 </figure>
 
-In my case, the reverse proxy of choice is Traefik. So I run Authelia alongside Traefik. The way this works is, you add Authelia as a middleware to your Traefik configuration and tie the middleware to your service(s). The Traefik docs explains about middlewares:
+In my case, the reverse proxy of choice is Traefik. So I run Authelia alongside Traefik. The way this works is, you add Authelia as a <abbr title="Attached to the routers, pieces of middleware are a means of tweaking the requests before they are sent to your service">middleware</abbr> to your Traefik configuration and tie the middleware to your service(s). The Traefik docs explains about middlewares:
 >Attached to the routers, pieces of middleware are a means of tweaking the requests before they are sent to your service (or before the answer from the services are sent to the clients). There are several available middleware in Traefik, some can modify the request, the headers, some are in charge of redirections, some add authentication, and so on.
 
 Now, most of my services are containerized with Docker, so I start out by writing my compose file, `docker-compose.yml`.
@@ -116,7 +117,7 @@ All I needed to do is, remove the middleware labels from my services' compose fi
     [entryPoints.websecure.http]
       middlewares = ["securityHeaders@file", "authelia@docker"] # Adding the Authelia middleware
 ```
-Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then, I restart both Authelia and Traefik, because the entrypoints' configuration doesnt reside in Traefik's dynamic configuration, which is capable of hot reloading after a change.
+Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then, I restart both Authelia and Traefik, because the entrypoints' configuration doesnt reside in Traefik's dynamic configuration, which is capable of <abbr title="Allows applying changes without restarting the app">hot reloading</abbr> after a change.
 <div class="topbar terminal">uxodb@nozarashi:~</div>
 ```console
 $ cd ~/docker/traefik && docker compose up -d --force-recreate traefik
@@ -209,7 +210,7 @@ session:
 
 The address we included with the `forwardauth` address at first, we can now define in the `session` section beneath `cookies` as the `authelia_url`. 
 
-## Confirming the issue's been solved
+## Confirming the issue has been solved
 
 The [last part](#implementing-the-changes) was dedicated to applying the changes necessary for multi domain support, what's left, is restarting Authelia and confirm it works.
 
@@ -242,4 +243,4 @@ Lets hope the full implementation provides a cleaner solution, I'm already happy
 
 ---
 
-In this post I have shown you how I've solved an issue I ran into. I've spent a good amount of time researching and implementing this issue, but in the end, Authelia's Multi Domain Protection has been implemented successfully in my environment. I'm much more satisfied with this solution in contrast to running multiple Authelia instances, which is an option as well... See you in the next!
+In this post I have shown you how I've solved an issue I ran into. I've spent a good amount of time researching and implementing the solution to this issue, but in the end, Authelia's Multi Domain Protection has been implemented successfully in my environment. I'm much more satisfied with this solution in contrast to running multiple Authelia instances, which is an option as well... See you in the next!

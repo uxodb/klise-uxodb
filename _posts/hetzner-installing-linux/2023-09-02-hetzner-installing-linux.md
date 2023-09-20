@@ -1,7 +1,7 @@
 ---
 title: "Hetzner: Installing Linux"
 date: 2023-09-02 23:30:00 +0200
-tags: [unix/linux, cli, ssh, systemctl, hetzner]
+tags: [unix/linux, cli, ssh, systemctl, hetzner, archlinux, raid]
 excerpt: How I installed Linux on a Hetzner server.
 ---
 Some years ago, I rented a dedicated server from Hetzner. In this piece I will outline Hetzner's simplified process for installing Linux on this server
