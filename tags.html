@@ -1,9 +1,10 @@
 ---
-title: Tags
+title: tags
 permalink: /tags/
 layout: page
-excerpt: Articles sorted by tags.
+excerpt: Posts sorted by tags.
 ---
+{% assign site.tags = site.tags | sort %}
 
 <div class="archive-tags">
   <a class="tag-item" href="#">all</a>

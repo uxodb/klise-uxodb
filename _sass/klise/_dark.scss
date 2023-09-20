@@ -1,7 +1,6 @@
 body[data-theme="dark"] {
   color: $dark-text-base-color;
   background-color: $dark-green-bg;
-
   // Heading
   h1,
   h2,
@@ -10,6 +9,7 @@ body[data-theme="dark"] {
   h5,
   h6 {
     color: $dark-white;
+    text-shadow: 2px 2px 1px #000;
   }
 
   // Table
@@ -24,6 +24,11 @@ body[data-theme="dark"] {
     tr {
       border-color: $dark-light;
     }
+  }
+
+  // Author bio
+  .author .author-bio {
+    color: rgba(199,190,190,0.9);
   }
 
   // Post
@@ -48,7 +53,13 @@ body[data-theme="dark"] {
     h5,
     h6 {
       .anchor-head {
-        color: $dark-text-link-green;
+        color: #e6cbb3;
+        text-shadow: 3px 3px 1px #000;
+        
+        &:hover {
+          color: rgba(0, 0, 0, 0);
+          text-shadow: 1px 1px 0px #e6cbb3;
+        }
       }
     }
   }
@@ -56,20 +67,21 @@ body[data-theme="dark"] {
   // Syntax
   code {
     &.highlighter-rouge {
-      background-color: $dark-light;
+//      background-color: $dark-green;
+      background-color: rgba(34, 43, 39, 0.75);
     }
   }
 
   // kbd tag
   kbd {
-    border-color: $dark-light;
+    border-color: $light-date-footer;
     color: $dark-white;
     text-shadow: 0 1px 0 $dark-black;
   }
 
   // horizontal rule
   hr {
-    border-color: $dark-light;
+    border-color: $dark-green;
   }
 
   // Post Meta
@@ -110,8 +122,8 @@ body[data-theme="dark"] {
 
   // Blockquote
   blockquote {
-    color: $dark-gray;
-    border-color: $dark-light;
+    color: #b1cec6; // $dark-gray;
+    border-color: $dark-green; //$dark-light;
   }
 
   // Strong, Bold
@@ -123,6 +135,7 @@ body[data-theme="dark"] {
   // Navbar
   .navbar {
     border-color: $dark-light;
+    background-color: $dark-green-bg;
     .menu {
       a#mode {
         .mode-sunny {
@@ -137,7 +150,7 @@ body[data-theme="dark"] {
         color: $dark-white;
       }
       @include media-query($on-mobile) {
-        background-color: $dark-black;
+        background-color: $dark-green-bg;
         border-color: $dark-light;
 
         .menu-icon {
@@ -147,7 +160,7 @@ body[data-theme="dark"] {
         }
 
         input[type="checkbox"]:checked ~ .trigger {
-          background: $dark-black;
+          background: $dark-green-bg;
         }
       }
     }
@@ -168,7 +181,7 @@ body[data-theme="dark"] {
         color: $dark-text-base-color;
 
         &:hover,
-        &focus {
+        &:focus {
           color: $dark-white;
         }
       }
@@ -185,23 +198,14 @@ body[data-theme="dark"] {
       .post-title {
         color: $dark-white;
         opacity: 0.9;
-      }
-
-      &:hover,
-      &:focus {
-        .post-title {
-          color: $dark-text-link-green-active;
+      
+        &:hover,
+        &:focus {
+          color: $dark-text-link-green;
         }
       }
-
       .nav-arrow {
         color: $dark-gray;
-      }
-    }
-
-    @include media-query($on-mobile) {
-      .post-nav-item:nth-child(even) {
-        border-color: $dark-light;
       }
     }
   }
@@ -216,7 +220,7 @@ body[data-theme="dark"] {
     }
     .footer_copyright {
       color: $dark-gray;
-      opacity: 1;
+     // opacity: 1;
     }
   }
 

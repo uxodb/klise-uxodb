@@ -1,10 +1,10 @@
 // Reset some basic elements
 * {
-  -webkit-transition: background-color 75ms ease-in, border-color 75ms ease-in;
-  -moz-transition: background-color 75ms ease-in, border-color 75ms ease-in;
-  -ms-transition: background-color 75ms ease-in, border-color 75ms ease-in;
-  -o-transition: background-color 75ms ease-in, border-color 75ms ease-in;
-  transition: background-color 75ms ease-in, border-color 75ms ease-in;
+  -webkit-transition: background-color 150ms linear, border-color 150ms linear;
+  -moz-transition: background-color 150ms linear, border-color 150ms linear;
+  -ms-transition: background-color 150ms linear, border-color 150ms linear;
+  -o-transition: background-color 150ms linear, border-color 150ms linear;
+  transition: background-color 150ms linear, border-color 150ms linear;
 }
 
 .notransition {
@@ -14,8 +14,13 @@
   -o-transition: none;
   transition: none;
 }
-
+// non-permanent solution for fixed navbar. spacing page-content
+div.spacer {
+  height: 67px;
+  position: relative;
+}
 html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;
@@ -206,9 +211,9 @@ h6 {
   & + ol {
     margin-top: 10px;
   }
-
+  scroll-margin-top: 97px;
   @include media-query($on-mobile) {
-    scroll-margin-top: 65px;
+    scroll-margin-top: 55px;
   }
 }
 
@@ -238,7 +243,9 @@ a {
   }
 
   &:focus {
-    outline: 3px solid rgba(0, 54, 199, 0.6);
+//    text-decoration: underline;
+//    text-decoration-color: rgba(0, 54, 199, 0.6);
+    outline: 1px solid rgba(0, 54, 199, 0.6);
     outline-offset: 2px;
   }
 }
@@ -322,10 +329,8 @@ sup {
 }
 
 table {
-  width: 100%;
-  margin-top: $spacing-half;
   border-collapse: collapse;
-  font-size: $small-font-size;
+  font-size: $smaller-font-size;
 
   thead {
     font-weight: $bold-weight;
@@ -336,8 +341,6 @@ table {
   th,
   td,
   tr {
-    border: 1px solid $light;
-    padding: 2px 7px;
   }
 }
 
@@ -351,8 +354,8 @@ table {
 // When mouse block a text set this color
 mark,
 ::selection {
-  background: #e6cbb3;
-  color: $black;
+  background: #e6cbb3; 
+  color: $dark-green-bg;
 }
 
 // Github Gist clear border

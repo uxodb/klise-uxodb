@@ -76,7 +76,7 @@
       {% endif %}
 
       {% if include.anchorAttrs %}
-        {% capture anchor %}{{ anchor }} {{ include.anchorAttrs }}{% endcapture %}
+        {% capture anchor %}{{ anchor }} onclick="{{ include.anchorAttrs }}"{% endcapture %}
       {% endif %}
 
       {% capture anchor %}<a {{ anchor }}>{{ include.anchorBody | replace: '%heading%', header | default: '' }}</a>{% endcapture %}

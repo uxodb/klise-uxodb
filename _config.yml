@@ -13,8 +13,9 @@ mode: dark # default theme "dark" | "light"
 author:
   name: uxodb # author name
   bio: >-
-    IT Engineer 🤖<br />
     Recording my progress in the technical realm...
+  title: IT Engineer
+  deco: 🤖
   username: uxodb # general username
   github: uxodb # github username
 #  twitter: twitter_username # twitter username
@@ -40,6 +41,12 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+    span:
+      line_numbers: false
+
 
 # Default front matter
 defaults:
@@ -67,6 +74,7 @@ number_of_posts: 5
 # theme: klise
 sass:
   style: compressed
+  sass_dir: _sass
 
 include:
   - _redirects
@@ -92,3 +100,4 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-postfiles
+
