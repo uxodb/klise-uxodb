@@ -237,7 +237,7 @@ access_control:
     - domain: monitor.example.com
       policy: one_factor
 ```
-As you can see, I added the domain with the `bypass` policy, meaning the domain is accessible without authorization being required. (which is actually the Authelia portal, so it still *will* show a login screen).
+As you can see, I added the domain with the `bypass` policy, meaning the domain is accessible without authentication being required. (which is actually the Authelia portal, so it still *will* show a login screen).
 I browsed to `auth.domain2.com` and was happy to see the problem is solved. 
 
 Looks like adding the domain to our access control solved the issue. I'm not exactly sure as to why it's necessary with the second domain, the initial domain does not need such a rule. Maybe it's the result of the feature not being fully implemented yet. We're also still running the 4.38 beta, so that might explain it.
