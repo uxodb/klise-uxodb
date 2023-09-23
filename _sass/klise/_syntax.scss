@@ -30,7 +30,9 @@ pre.highlight {
   border: 1px solid rgba(128,128,128,0.1);
   background-color: #161d1a;
   border-radius: 0px 0px 8px 8px;
+  padding-left: 10px;
   padding: 10px;
+  padding-right: unset;
   display: block;
 
   > code {
@@ -51,7 +53,7 @@ div.highlight pre.highlight table.rouge-table {
   display: block;
   color: #bbb;
   font-family: "JetBrains Mono", monospace;
-  font-size: $small-font-size;
+  font-size: $smaller-font-size;
   background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
   margin: 0 -27px;
   border: 1px solid rgba(128, 128, 128, 0.1);
@@ -104,6 +106,8 @@ div.highlight pre.highlight table.rouge-table {
 div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
   overflow-x: auto;
   display: block;
+  scrollbar-width: thin;
+
   @include media-query($on-mobile) {
     overflow-x: auto;
     display: unset;
