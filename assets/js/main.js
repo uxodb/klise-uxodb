@@ -49,7 +49,9 @@ window.addEventListener("beforeunload", function (e) {
 document.addEventListener("scroll", function (event) {
     if (window.scrollY < 400) {
         document.getElementById('scrolltop').style.opacity='0';
+        document.getElementById('scrolltop').style.visibility='hidden';
     } else {
+        document.getElementById('scrolltop').style.visibility='visible';
         document.getElementById('scrolltop').style.opacity='1';
     }
 });
