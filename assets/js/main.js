@@ -31,7 +31,7 @@
 })();
 
 
-
+// Remember scrollposition after reload
 document.addEventListener("DOMContentLoaded", function (event) {
     var scrollpos = sessionStorage.getItem('scrollpos');
     var page = sessionStorage.getItem('page');
@@ -43,4 +43,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 window.addEventListener("beforeunload", function (e) {
     sessionStorage.setItem('scrollpos', window.scrollY);
     sessionStorage.setItem('page', window.document.URL);
+});
+
+// Scroll to top button
+document.addEventListener("scroll", function (event) {
+    if (window.scrollY < 400) {
+        document.getElementById('scrolltop').style.opacity='0';
+    } else {
+        document.getElementById('scrolltop').style.opacity='1';
+    }
 });
