@@ -34,11 +34,13 @@
 
 document.addEventListener("DOMContentLoaded", function (event) {
     var scrollpos = sessionStorage.getItem('scrollpos');
-    if (scrollpos) {
+    var page = sessionStorage.getItem('page');
+    if (scrollpos && page === window.document.URL) {
         window.scrollTo(0, scrollpos);
         sessionStorage.removeItem('scrollpos');
     }
 });
 window.addEventListener("beforeunload", function (e) {
     sessionStorage.setItem('scrollpos', window.scrollY);
+    sessionStorage.setItem('page', window.document.URL);
 });
