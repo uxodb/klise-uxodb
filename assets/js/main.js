@@ -46,7 +46,7 @@ window.addEventListener("beforeunload", function (e) {
 });
 
 // Scroll to top button
-document.addEventListener("scroll", function (event) {
+window.addEventListener("scroll", function (event) {
     if (window.scrollY < 400) {
         document.getElementById('scrolltop').style.opacity='0';
         document.getElementById('scrolltop').style.visibility='hidden';
