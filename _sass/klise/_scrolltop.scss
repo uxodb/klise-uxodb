@@ -1,4 +1,4 @@
-.button#scrolltop {
+div.btn #scrolltop {
   position: fixed;
   bottom: 50px;
   border: 2px solid rgba(230, 203, 179, 0.2);
@@ -47,27 +47,27 @@
 }
 
 @media (min-width: 768px) { //1650 1400
-  .button#scrolltop {
+  div.btn #scrolltop {
     right: 5vw;
   }
 }
 @media (min-width: 1401px) {
-  .button#scrolltop {
+  div.btn #scrolltop {
     right: 10vw;
   }
 }
 @media (min-width: 1681px) {
-  .button#scrolltop {
+  div.btn #scrolltop {
     right: 20vw;
   }
 }
 @media (min-width: 1921px) {
-  .button#scrolltop {
+  div.btn #scrolltop {
     right: 25vw;
   }
 }
 @media (min-width: 2561px) {
-  .button#scrolltop {
+  div.btn #scrolltop {
     right: 35vw
   }
 }
