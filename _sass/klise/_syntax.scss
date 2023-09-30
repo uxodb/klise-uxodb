@@ -1,6 +1,6 @@
 // Code
 code {
-  font-family: "Hack", "JetBrains Mono", monospace;
+  font-family: "Hack", "Fira Mono", monospace;
   text-rendering: optimizeLegibility;
   font-feature-settings: "calt" 1;
   font-variant-ligatures: normal;
@@ -53,7 +53,7 @@ div.highlight pre.highlight table.rouge-table {
   display: block;
   color: #bbb;
   color: rgba(187, 187, 187, 0.6);
-  font-family: Hack, "JetBrains Mono", monospace;
+  font-family: Hack, "Fira Mono", monospace;
   font-size: $smaller-font-size;
   background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
   margin: 0 -27px;
@@ -118,11 +118,11 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
   pre {
     margin: 0;
     padding-right: 5px;
-    font-family: "Hack", "JetBrains Mono", monospace;
+    font-family: "Hack", "Fira Mono", monospace;
     opacity: 0.9;
   }
   td.rouge-gutter {
-    border-right: 1px solid rgba(169, 188, 179, 0.3);
+    border-right: 1px solid rgba(169, 188, 179, 0.2);
     pre.lineno {
       color: #a9bcb3;
       opacity: 0.6;
