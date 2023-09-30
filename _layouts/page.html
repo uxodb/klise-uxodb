@@ -8,7 +8,6 @@ layout: compress
 {% include header.html %}
 
 <body data-theme="{{ site.mode }}" class="notransition">
-
   <script>
     const body = document.body;
     const data = body.getAttribute("data-theme");
@@ -27,7 +26,6 @@ layout: compress
     
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
-
   {% include navbar.html %}
   <div class="wrapper">
     <header class="header">
