@@ -105,11 +105,11 @@ div.highlight pre.highlight table.rouge-table {
   }
 }
 
-
 div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
   overflow-x: auto;
   display: block;
-  scrollbar-width: thin;
+  scrollbar-width: thin; 
+  scrollbar-color: rbga(155,155,155, 0.5) transparent;
 
   @include media-query($on-mobile) {
     overflow-x: auto;
