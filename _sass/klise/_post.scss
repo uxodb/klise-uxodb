@@ -148,6 +148,7 @@
       color: $text-link-blue;
       text-shadow: 1px 1px 2px #000;
       outline: none;
+      transition: none;
       @include media-query($on-mobile) {
         display: block;
         text-align: right;
