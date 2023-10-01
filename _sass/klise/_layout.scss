@@ -84,13 +84,29 @@
     padding: 5px 8px;
     opacity: 0.7;
     letter-spacing: 0.3px;
-
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #e6cbb3;
+      transform-origin: center;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
     &:hover {
       opacity: 1;
+      &::before {
+        transform-origin: center;
+        transform: scaleX(1);
+      }
     }
 
     &:not(:last-child) {
       margin-right: 5px;
+      position: relative;
     }
 
     &.rss {
@@ -107,6 +123,7 @@
   .menu-link.active {
     opacity: 1;
     font-weight: 600;
+    position: relative;
   }
 
   @include media-query($on-mobile) {
