@@ -5,17 +5,24 @@ div.btn #scrolltop {
   border-radius: 100%;
   font-size: 23px;
   box-shadow: 1px 5px 6px 0px #000;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   display: inline-block;
+  cursor: pointer;
   opacity: 0;
   outline: none;
+  padding: 0;
   background-color: #161d1a;
   -moz-transform: translate3d(0);
   -webkit-transform: translate3d(0);
   -ms-transform: translate3d(0);
   -o-transform: translate3d(0);
   transform: translate3d(0);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   @include media-query($on-mobile) {
     right: 1rem;
     bottom: 4rem;
@@ -33,16 +40,16 @@ div.btn #scrolltop {
     transform: translate3d(0,-5px,0);
     -moz-transition: transform 0.4s ease-out;
     -webkit-transition: transform 0.4s ease-out;
-    -ms-transition: transform 0.4s ease-out;;
+    -ms-transition: transform 0.4s ease-out;
     -o-transition: transform 0.4s ease-out;
     transition: transform 0.4s ease-out;
   }
-  .fa-angle-up {
+  .fa-chevron-up {
   color: #e6cbb3;
-  width: 2.75rem;
-  text-align: center;
   position: relative;
-  padding-top: 11px;
+  text-align: center;
+  line-height: 3rem;
+  bottom: 1px;
   }
 }
 

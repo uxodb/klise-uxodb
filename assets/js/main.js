@@ -59,3 +59,7 @@ window.addEventListener("scroll", function (event) {
     }
 });
 
+function toTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
