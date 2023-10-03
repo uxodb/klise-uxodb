@@ -1,7 +1,8 @@
 // Fonts preferences
-$sans-family: Roboto, sans-serif;
+$sans-family: Nunito, sans-serif;
 $mono-family: Consolas, monospace;
 $base-font-size: 16px;
+$new-font-size: 16.5px;
 $medium-font-size: $base-font-size * 0.938; //15,008
 $small-font-size: $base-font-size * 0.875; //14px
 $smaller-font-size: $base-font-size * 0.813; //13,008
@@ -24,7 +25,7 @@ $light: #ececec;
 $smoke: #d2c7c7;
 $gray: #6b7886;
 $white: #fff;
-
+$grey: #6b7886;
 // Dark Colors
 $dark-text-base-color: #c7bebe;
 $dark-text-link-blue: #ff5277;
