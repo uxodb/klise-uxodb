@@ -28,7 +28,7 @@ pre.highlight {
     overflow-x: auto;
   }
   border: 1px solid rgba(128,128,128,0.1);
-  background-color: #161d1a;
+  background-color: #30373c;
   border-radius: 0px 0px 8px 8px;
   padding-left: 10px;
   padding: 10px;
@@ -49,13 +49,31 @@ div.highlight pre.highlight table.rouge-table {
   overflow-x:  auto;
 }
 
+body[data-theme="dark"] {
+  .topbar {
+    background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
+    color: rgba(187, 187, 187, 0.8);
+    &::after {
+      opacity: 0.6;
+    }
+    &.code, &.terminal, &.text {
+      &::before {
+        opacity: 0.6;
+      }
+    }
+  }
+  pre.highlight {
+    background-color: #161d1a;
+  }
+}
+
 .topbar {
   display: block;
   color: #bbb;
-  color: rgba(187, 187, 187, 0.6);
   font-family: Hack, "Fira Mono", monospace;
+  color: rgba(187, 187, 187, 1);
   font-size: $smaller-font-size;
-  background: linear-gradient(0deg, #161d1a 5%, #222b27 100%);
+  background: linear-gradient(0deg, #30373c 5%, rgba(48, 55, 60, 0.8) 100%);
   margin: 0 -27px;
   border: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom-style: unset;
@@ -79,7 +97,7 @@ div.highlight pre.highlight table.rouge-table {
     content: "\f111 \f111 \f111";
     position: absolute;
     right: 0;
-    opacity: 0.4;
+    opacity: 1;
     color: #bbb;
   }
   &.code, &.terminal, &.text {
@@ -90,7 +108,7 @@ div.highlight pre.highlight table.rouge-table {
       left: 0;
       font-size: 16px;
       padding-left: 12px;
-      opacity: 0.4;
+      opacity: 1;
       color: #bbb;
     }
   }
@@ -119,7 +137,7 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
     margin: 0;
     padding-right: 5px;
     font-family: "Hack", "Fira Mono", monospace;
-    opacity: 0.9;
+    opacity: 1;
   }
   td.rouge-gutter {
     border-right: 1px solid rgba(169, 188, 179, 0.2);
