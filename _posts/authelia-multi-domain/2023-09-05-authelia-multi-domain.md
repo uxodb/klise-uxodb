@@ -4,12 +4,12 @@ date: 2023-09-19 23:59:00 +0200
 tags: [unix/linux, authelia, traefik, reverse proxy, docker, yaml, cli, ssh]
 published: true
 ---
-A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this. 
+**A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this.**
 
-At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.
+**At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.**
 
 ## Running Authelia
-Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request.To illustrate this, I've attached a basic diagram of the architecture below.
+Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request. To illustrate this, I've attached a basic diagram of the architecture below.
 <figure>
 <img src="/authelia-multi-domain/authelia-proxy.png" alt="Authelia Diagram">
 <figcaption>Authelia working with the reverse proxy to evaluate the incoming request. </figcaption>
@@ -91,7 +91,7 @@ session:
 The access rules have been configured, a `bypass` for `service1.example.com`, meaning there is no need for authentication by Authelia when accessing that domain and a `one_factor` for `monitor.example.com`, which *does* require authentication when accessing it. The cookie's configuration has also been set. The only remaining task is to create a user account in Authelia, which I wont describe in detail, but I made a new user `uxodb`, generated the password and added it to `users_database.yml`.
 
 Next, we start up the Authelia container.
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ docker compose up -d
 [+] Running 1/1
@@ -117,7 +117,7 @@ All I needed to do is, remove the middleware labels from my services' compose fi
       middlewares = ["securityHeaders@file", "authelia@docker"] # Adding the Authelia middleware
 ```
 Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then, I restart both Authelia and Traefik, because the entrypoints' configuration doesnt reside in Traefik's dynamic configuration, which is capable of <abbr title="Allows applying changes without restarting the app">hot reloading</abbr> after a change.
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ cd ~/docker/traefik && docker compose up -d --force-recreate traefik
 [+] Running 1/1
@@ -175,7 +175,7 @@ Additionally, the relevant labels from the same example look like this:
 ```
 As you can see, the label which has the portal's address hardcoded in is commented out.
 
-When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and avoid redirecting requests from `domain2.com` to `auth.example.com`. You may choose to do so, if you want to, bu with this you're not forced to. 
+When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and avoid redirecting requests from `domain2.com` to `auth.example.com`. You may choose to do so, if you want to, but with this you're not forced to. 
 
 In my initial compose file the address was hardcoded in the label, meaning if I were to keep that address in and add my second domain to Authelia, requests to my second domain would redirect to the hardcoded address which contains the initial domain. By leaving out the domain in the label, as is suggested in the previous quote,  we now can configure that part in the Authelia configuration instead and that way we can match the domains to the portal.
 
@@ -215,7 +215,7 @@ The address we've included with the `forwardauth` address at first, we can now d
 
 The [last part](#implementing-the-changes) was dedicated to applying the changes necessary for multi domain support, what's left, is restarting Authelia and confirm it works.
 
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ cd ~/docker/authelia && docker compose up -d authelia --force-recreate
 [+] Running 1/0

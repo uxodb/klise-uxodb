@@ -73,6 +73,7 @@ number_of_posts: 5
 # Build settings
 # theme: klise
 sass:
+  sourcemap: never
   style: compressed
   sass_dir: _sass
 

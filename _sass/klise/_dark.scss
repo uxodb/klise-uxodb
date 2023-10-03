@@ -100,7 +100,7 @@ body[data-theme="dark"] {
     }
 
     span[itemprop="author"] {
-      border-color: $dark-light;
+      border-color: #387e67;
     }
   }
 
@@ -127,7 +127,7 @@ body[data-theme="dark"] {
 
   // Blockquote
   blockquote {
-    color: #b1cec6; // $dark-gray;
+    color: #f7efc3; //#e6cbb3; //#bac8c4 //#b1cec6; // $dark-gray;
     border-color: $dark-green; //$dark-light;
   }
 
@@ -135,6 +135,7 @@ body[data-theme="dark"] {
   strong,
   b {
     color: $dark-white;
+    font-weight: 600;
   }
 
   // Navbar
