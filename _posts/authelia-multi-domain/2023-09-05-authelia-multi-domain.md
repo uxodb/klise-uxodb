@@ -91,7 +91,7 @@ session:
 The access rules have been configured, a `bypass` for `service1.example.com`, meaning there is no need for authentication by Authelia when accessing that domain and a `one_factor` for `monitor.example.com`, which *does* require authentication when accessing it. The cookie's configuration has also been set. The only remaining task is to create a user account in Authelia, which I wont describe in detail, but I made a new user `uxodb`, generated the password and added it to `users_database.yml`.
 
 Next, we start up the Authelia container.
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ docker compose up -d
 [+] Running 1/1
@@ -117,7 +117,7 @@ All I needed to do is, remove the middleware labels from my services' compose fi
       middlewares = ["securityHeaders@file", "authelia@docker"] # Adding the Authelia middleware
 ```
 Once that was done, I modified the access rules in the Authelia configuration, which we've went over earlier. Then, I restart both Authelia and Traefik, because the entrypoints' configuration doesnt reside in Traefik's dynamic configuration, which is capable of <abbr title="Allows applying changes without restarting the app">hot reloading</abbr> after a change.
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ cd ~/docker/traefik && docker compose up -d --force-recreate traefik
 [+] Running 1/1
@@ -215,7 +215,7 @@ The address we've included with the `forwardauth` address at first, we can now d
 
 The [last part](#implementing-the-changes) was dedicated to applying the changes necessary for multi domain support, what's left, is restarting Authelia and confirm it works.
 
-<div class="topbar terminal">uxodb@nozarashi:~</div>
+<div class="topbar terminal">uxodb@Konohagakure:~</div>
 ```console
 $ cd ~/docker/authelia && docker compose up -d authelia --force-recreate
 [+] Running 1/0
