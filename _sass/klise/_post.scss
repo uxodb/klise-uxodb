@@ -13,7 +13,6 @@
 
   .tags {
     margin-left: 3px;
-    letter-spacing: 0.5px;
 
     .tag {
       font-weight: $bold-weight;
@@ -70,6 +69,7 @@
 // Post content
 .page-content {
   padding-top: 8px;
+  font-weight: 400;
 
   iframe {
     text-align: center;
