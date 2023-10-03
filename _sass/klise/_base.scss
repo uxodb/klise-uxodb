@@ -280,13 +280,13 @@ blockquote {
   color: $gray;
   font-style: italic;
   text-align: center;
-  opacity: 0.9;
   border-top: 1px solid $light;
   border-bottom: 1px solid $light;
   padding: 10px;
   margin-left: 10px;
   margin-right: 10px;
   font-size: 1em;
+  font-weight: 200;
 
   > :last-child {
     margin-bottom: 0;
@@ -367,12 +367,13 @@ table {
 }
 
 // When mouse block a text set this color
-mark,
-::selection {
-  background: #e6cbb3; 
-  color: $dark-green-bg;
+[data-theme="dark"] {
+  mark,
+  ::selection {
+    background: #e6cbb3; 
+    color: $dark-green-bg;
+  }
 }
-
 // Github Gist clear border
 .gist {
   table {
