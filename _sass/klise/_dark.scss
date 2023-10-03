@@ -33,6 +33,11 @@ body[data-theme="dark"] {
 
   // Post
   .page-content {
+    figure {
+      img:hover {
+        box-shadow: 0 0 20px #e6cbb3; //#0036c7;
+      }
+    }
     a {
       color: $dark-text-link-green;
 
