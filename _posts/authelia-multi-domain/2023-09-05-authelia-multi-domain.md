@@ -9,7 +9,7 @@ A little while ago, I deployed <a href="https://www.authelia.com" target="_blank
 At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.
 
 ## Running Authelia
-Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request.To illustrate this, I've attached a basic diagram of the architecture below.
+Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request. To illustrate this, I've attached a basic diagram of the architecture below.
 <figure>
 <img src="/authelia-multi-domain/authelia-proxy.png" alt="Authelia Diagram">
 <figcaption>Authelia working with the reverse proxy to evaluate the incoming request. </figcaption>
@@ -175,7 +175,7 @@ Additionally, the relevant labels from the same example look like this:
 ```
 As you can see, the label which has the portal's address hardcoded in is commented out.
 
-When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and avoid redirecting requests from `domain2.com` to `auth.example.com`. You may choose to do so, if you want to, bu with this you're not forced to. 
+When using multiple domains with Authelia, customizing the endpoint means you can seperate both domains and avoid redirecting requests from `domain2.com` to `auth.example.com`. You may choose to do so, if you want to, but with this you're not forced to. 
 
 In my initial compose file the address was hardcoded in the label, meaning if I were to keep that address in and add my second domain to Authelia, requests to my second domain would redirect to the hardcoded address which contains the initial domain. By leaving out the domain in the label, as is suggested in the previous quote,  we now can configure that part in the Authelia configuration instead and that way we can match the domains to the portal.
 
