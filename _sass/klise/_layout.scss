@@ -67,6 +67,7 @@
 
   .trigger {
     float: right;
+    font-size: 16.5px;
   }
 
   .menu-trigger {
@@ -259,7 +260,7 @@
 .posts-item-note {
   font-size: $base-font-size;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   padding-left: 3px;
   color: $black;
 }
@@ -305,7 +306,6 @@
     padding: 0;
     font-size: $base-font-size;
     font-weight: normal;
-    letter-spacing: 0.1px;
     white-space: nowrap;
     @include media-query($on-mobile) {
 //      white-space: unset;
@@ -341,14 +341,29 @@
     color: $light-date-footer;
     font-weight: $normal-weight;
     opacity: 0.8;
+    &#fa-copy::before {
+      content: "\f1f9";
+      font-family: "Font Awesome 6 Free";
+      font-size: 11px;
+      padding-right: 2px;
+      position: relative;
+    }
   }
   a.footer_item {
     color: $light-date-footer;
     text-decoration: none;
     opacity: 0.8;
+    &#fa-github::after {
+      content: "\f09b";
+      font-family: "Font Awesome 6 Brands";
+      position: relative; //absolute for no space
+      display: inline-block;
+      margin-left: 1px;
+      font-size: 15px;
+    }
 
     &:not(:last-child) {
-      margin-right: 10px;
+      margin-right: 7px; // was 10
       &:hover {
         opacity: 1;
       }
