@@ -277,7 +277,7 @@ em {
 
 // Blockquotes
 blockquote {
-  color: $gray;
+  color: #004288;
   font-style: italic;
   text-align: center;
   border-top: 1px solid $light;
@@ -366,7 +366,6 @@ table {
   clear: both;
 }
 
-// When mouse block a text set this color
 [data-theme="dark"] {
   mark,
   ::selection {
