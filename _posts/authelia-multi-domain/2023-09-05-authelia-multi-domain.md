@@ -4,9 +4,9 @@ date: 2023-09-19 23:59:00 +0200
 tags: [unix/linux, authelia, traefik, reverse proxy, docker, yaml, cli, ssh]
 published: true
 ---
-A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this. 
+**A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this.**
 
-At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.
+**At some point, while tinkering with Authelia, I introduced some changes which rendered one of my services inaccessible. I really liked the modifications I made and instead of rolling them back, I decided to look for a solution.**
 
 ## Running Authelia
 Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request. To illustrate this, I've attached a basic diagram of the architecture below.
