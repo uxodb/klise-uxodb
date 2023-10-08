@@ -91,29 +91,53 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background-color: #e6cbb3;
-      transform-origin: center;
+      height: 1px;
+      background-color: $gray;
+      transform-origin: right;
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
     &:hover {
       opacity: 1;
+      background-color: #ececec;
+      border-radius: 6px;
       &::before {
-        transform-origin: center;
+        transform-origin: right;
         transform: scaleX(1);
+        transition: transform 0.3s ease;
       }
     }
-
+    &:nth-child(1)::before {
+     // right: 30%;
+      left: 62.5%;
+    }
+    &:nth-child(2)::before {
+      left: 70%;
+     // right: 22%;
+    }
+    &:nth-child(3)::before {
+      left: 78.5%;
+      //right: 15.5%;
+    }
+    &:nth-child(4)::before {
+      left: 84.5%;
+      //right: 8%;
+    }
     &:not(:last-child) {
       margin-right: 5px;
-      position: relative;
     }
 
     &.rss {
       position: relative;
       bottom: -3px;
       outline: none;
+      &:hover {
+        background-color: unset;
+      }
+      &::before {
+        transform: unset;
+        height: 0px;
+      }
     }
 
     @include media-query($on-mobile) {
@@ -124,7 +148,6 @@
   .menu-link.active {
     opacity: 1;
     font-weight: 600;
-    position: relative;
   }
 
   @include media-query($on-mobile) {
@@ -285,7 +308,7 @@
     font-size: $small-font-size;
     align-self: flex-start;
     background-color: #ececec;
-    border-radius: 3px;
+    border-radius: 4px;
     font-family: $font-date-footer;
     text-align: center;
     box-sizing: content-box;    
@@ -330,8 +353,8 @@
   margin-top: 8em;
   margin-bottom: 2em;
   text-align: center;
-  font-size: $small-font-size;
-  font-family: "Fira Mono", monospace;
+  font-size: $small-font-size + 1;
+  font-family: "Fantasque Sans Mono", monospace;
   opacity: 0.6;
 
   @include media-query($on-mobile) {
@@ -451,9 +474,9 @@
 .archive-tags {
   height: auto;
   .tag-item {
-    padding: 1px 3px;
-    border-radius: 5px;
+    padding: 0px 3px;
+    border-radius: 2px;
     border: 1px solid rgba(128, 128, 128, 0.1);
-    background-color: rgba(34, 43, 39, 0.75);
+    background-color: rgba(128,128,128,0.1);
   }
 }
