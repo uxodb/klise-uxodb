@@ -1,6 +1,6 @@
 // Code
-code {
-  font-family: "Hack", "Fira Mono", monospace;
+code { // span
+  font-family: "Fantasque Sans Mono", monospace;
   text-rendering: optimizeLegibility;
   font-feature-settings: "calt" 1;
   font-variant-ligatures: normal;
@@ -8,14 +8,14 @@ code {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  font-size: $smaller-font-size;
+  font-size: $small-font-size + 0.5;
 
   &.highlighter-rouge {
     padding: 1px 3px;
     position: relative;
     top: -1px;
     background-color: #f6f6f6;
-    border-radius: 5px;
+    border-radius: 2px;
     border: 1px solid rgba(128,128,128,0.1);
   }
 }
@@ -40,7 +40,8 @@ pre.highlight {
     max-width: 50rem;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.5;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
     display: block;
     border: 0;
   }
@@ -70,7 +71,7 @@ body[data-theme="dark"] {
 .topbar {
   display: block;
   color: #bbb;
-  font-family: Hack, "Fira Mono", monospace;
+  font-family: "Hack", monospace;
   color: rgba(187, 187, 187, 1);
   font-size: $smaller-font-size;
   background: linear-gradient(0deg, #30373c 8%, rgba(48, 55, 60, 0.8) 100%);
@@ -136,7 +137,8 @@ div.highlighter-rouge div.highlight pre.highlight code table.rouge-table {
   pre {
     margin: 0;
     padding-right: 5px;
-    font-family: "Hack", "Fira Mono", monospace;
+    font-family: "Fantasque Sans Mono", monospace;
+    font-size: 13.5px;
     opacity: 1;
   }
   td.rouge-gutter {
