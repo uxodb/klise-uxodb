@@ -62,6 +62,7 @@
 
         <div class="page-content" itemprop="articleBody">
           {% include anchor_headings.html html=content anchorAttrs="navigator.clipboard.writeText(this.href);" anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
+          {% include toc.html html=content sanitize=false class="toc" item_class="toc-item"  %}
           {% if page.tweet %}
           <p>Comments this article on 
             <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
