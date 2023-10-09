@@ -76,6 +76,7 @@
 
     </main>
 
+    {% include scroll_top.html %}
     {% if page.modified %}
       <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
     {% endif %}

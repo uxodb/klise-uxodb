@@ -47,13 +47,10 @@ window.addEventListener("beforeunload", function (e) {
 
 // Scroll to top button
 window.addEventListener("scroll", function (event) {
-    if (window.scrollY < 500 || window.location.pathname == "/") {
+    if (window.scrollY < 500 && window.location.pathname !== "/") {
         document.getElementById('scrolltop').style.opacity='0';
         document.getElementById('scrolltop').style.visibility='hidden';
-    } else if (window.scrollY < 500) {
-        document.getElementById('scrolltop').style.opacity='0';
-        document.getElementById('scrolltop').style.visibility='hidden';
-    }  else {
+    } else if (window.scrollY > 500 && window.location.pathname !== "/") {
         document.getElementById('scrolltop').style.visibility='visible';
         document.getElementById('scrolltop').style.opacity=1;
     }
