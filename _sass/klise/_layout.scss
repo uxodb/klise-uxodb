@@ -18,9 +18,10 @@
   
 // Navigation
 .menu {
-  user-select: none;
+  -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
+  user-select: none;
 
   a#mode {
     float: left;
@@ -29,6 +30,7 @@
     position: relative;
     clear: both;
     -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
     transform: scale(1, 1);
     opacity: 0.7;
     z-index: 1;
@@ -38,6 +40,7 @@
     }
     &:active {
       -webkit-transform: scale(0.9, 0.9);
+      -ms-transform: scale(0.9, 0.9);
       transform: scale(0.9, 0.9);
     }
     .mode-moon {
@@ -93,17 +96,33 @@
       right: 0;
       height: 1px;
       background-color: $gray;
+      -webkit-transform-origin: right;
+      -ms-transform-origin: right;
       transform-origin: right;
+      -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
       transform: scaleX(0);
-      transition: transform 0.3s ease;
+      -webkit-transition: -webkit-transform 0.3s ease;
+      -o-transition: transform 0.3s ease;
+      transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+      transition: transform 0.3s ease
     }
     &:hover {
       opacity: 1;
       background-color: #ececec;
+      -webkit-border-radius: 6px;
       border-radius: 6px;
       &::before {
+        -webkit-transform-origin: right;
+        -ms-transform-origin: right;
         transform-origin: right;
+        -webkit-transform: scaleX(1);
+        -ms-transform: scaleX(1);
         transform: scaleX(1);
+        -webkit-transition: -webkit-transform 0.3s ease;
+        -o-transition: transform 0.3s ease;
+        transition: -webkit-transition 0.3s ease;
+        transition: transform 0.3s ease, -webkit-transform 0.3s ease;
         transition: transform 0.3s ease;
       }
     }
@@ -135,6 +154,8 @@
         background-color: unset;
       }
       &::before {
+        -webkit-transform: unset;
+        -ms-transform: unset;
         transform: unset;
         height: 0px;
       }
@@ -189,6 +210,7 @@
       }
       &:active {
         -webkit-transform: scale(0.9, 0.9);
+        -ms-transform: scale(0.9, 0.9);
         transform: scale(0.9, 0.9);
       }
     }
@@ -202,9 +224,23 @@
       position: fixed;
       animation: 0.2s ease-in forwards fadein;
       -webkit-animation: 0.2s ease-in forwards fadein;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
       flex-direction: row;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
       justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
       align-items: center;
       background-color: $white;
       height: 100vh;
@@ -214,6 +250,7 @@
 
     .menu-link {
       display: block;
+      -webkit-box-sizing: border-box;
       box-sizing: border-box;
       font-size: 1.1em;
 
@@ -230,9 +267,19 @@
   margin-top: 6.3rem;
   margin-bottom: 7.2rem;
   text-align: center;
-  display: flex;                //added
-  align-items: center;          //added
-  flex-direction: column;       //added
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 
   @include media-query($on-mobile) {
     margin-bottom: 3em;
@@ -244,9 +291,12 @@
     overflow: hidden;           //added
     width: 85px;
     height: 85px;
+    -webkit-border-radius: 25px;
     border-radius: 25px;
     border-color: rgba(81, 81, 81, 0.8);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.06),0 4px 8px rgba(0,0,0,.06),0 8px 16px rgba(0,0,0,.06),0 16px 32px rgba(0,0,0,.06),0 32px 64px rgba(0,0,0,.06);
     box-shadow: 0 1px 2px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.06),0 4px 8px rgba(0,0,0,.06),0 8px 16px rgba(0,0,0,.06),0 16px 32px rgba(0,0,0,.06),0 32px 64px rgba(0,0,0,.06);
+    -moz-user-select: none;
     user-select: none;
     background-color: $black;
     -ms-user-select: none;
@@ -256,6 +306,8 @@
   }
 
   .author-avatar {
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
     transition: 0.6s;
     &:hover {
       -ms-transform: scale(1.3);
@@ -291,6 +343,9 @@
 
 // List of posts
 .post-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   padding: 5px 0;
   @extend %clearfix;
@@ -307,15 +362,22 @@
     margin-right: 10px;
     margin-top: 2px;
     font-size: $small-font-size;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
     align-self: flex-start;
     background-color: #ececec;
+    -webkit-border-radius: 4px;
     border-radius: 4px;
     font-family: $font-date-footer;
     text-align: center;
+    -webkit-box-sizing: content-box;
     box-sizing: content-box;    
 
     @include media-query($on-mobile) {
       margin-top: unset;
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center; //positions it in center
       font-size: $small-font-size;
       white-space: nowrap; // will keep the size of box, but position it on top
@@ -333,6 +395,7 @@
     white-space: nowrap;
     @include media-query($on-mobile) {
 //      white-space: unset;
+      -o-text-overflow: ellipsis;
       overflow: hidden;
       letter-spacing: unset;
       text-overflow: ellipsis;
@@ -406,8 +469,18 @@
 
 .not-found {
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
   height: 75vh;
   .title {
@@ -448,6 +521,7 @@
     height: 40px;
     outline: none;
     position: absolute;
+    -webkit-border-radius: 5px;
     border-radius: 5px;
     padding: 10px 10px 10px 35px;
     color: $text-base-color;
@@ -476,6 +550,7 @@
   height: auto;
   .tag-item {
     padding: 0px 3px;
+    -webkit-border-radius: 2px;
     border-radius: 2px;
     border: 1px solid rgba(128, 128, 128, 0.1);
     background-color: rgba(128,128,128,0.1);

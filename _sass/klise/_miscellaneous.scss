@@ -12,10 +12,12 @@
 // Animation blur
 @keyframes blur {
   0% {
+    -webkit-filter: blur(4px);
     filter: blur(4px);
   }
 
   100% {
+    -webkit-filter: blur(4px);
     filter: blur(4px);
   }
 }

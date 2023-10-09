@@ -35,6 +35,7 @@ body[data-theme="dark"] {
   .page-content {
     figure {
       img:hover {
+        -webkit-box-shadow: 0 0 20px #e6cbb3;
         box-shadow: 0 0 20px #e6cbb3; //#0036c7;
       }
     }
@@ -107,6 +108,7 @@ body[data-theme="dark"] {
   // Link
   a {
     color: inherit;
+    -webkit-text-decoration-color: $dark-smoke;
     text-decoration-color: $dark-smoke;
 
     &:hover {

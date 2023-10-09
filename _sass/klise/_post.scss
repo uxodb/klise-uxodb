@@ -77,11 +77,19 @@
 
   figure {
     img {
+      -webkit-border-radius: 2px;
       border-radius: 2px;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
       transition: all 0.3s;
       &:hover {
+        -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
         transform: scale(1.03);
+        -webkit-box-shadow: 0 0 25px #80a2ff;
         box-shadow: 0 0 25px #80a2ff; 
+        -webkit-transition: all 0.3s; 
+        -o-transition: all 0.3s; 
         transition: all 0.3s;
       }
 
@@ -155,6 +163,8 @@
       color: $text-link-blue;
       text-shadow: 1px 1px 2px #000;
       outline: none;
+      -webkit-transition: none;
+      -o-transition: none;
       transition: none;
       @include media-query($on-mobile) {
         display: block;
@@ -241,6 +251,7 @@ a.post-nav-link {
 
     width: 50%;
     padding-top: 10px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 
     &:nth-child(odd) {

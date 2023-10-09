@@ -51,6 +51,8 @@ div.highlight pre.highlight table.rouge-table {
 
 body[data-theme="dark"] {
   .topbar {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(8%, #161d1a), to(#222b27));
+    background: -o-linear-gradient(bottom, #161d1a 8%, #222b27 100%);
     background: linear-gradient(0deg, #161d1a 8%, #222b27 100%);
     color: rgba(187, 187, 187, 0.8);
     &::after {
@@ -73,6 +75,8 @@ body[data-theme="dark"] {
   font-family: "Hack", monospace;
   color: rgba(187, 187, 187, 1);
   font-size: $smaller-font-size;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(8%, #30373c), to(rgba(48, 55, 60, 0.8)));
+  background: -o-linear-gradient(bottom, #30373c 8%, rgba(48, 55, 60, 0.8) 100%);
   background: linear-gradient(0deg, #30373c 8%, rgba(48, 55, 60, 0.8) 100%);
   margin: 0 -27px;
   border: 1px solid rgba(128, 128, 128, 0.1);
