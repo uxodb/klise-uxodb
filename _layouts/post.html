@@ -25,6 +25,7 @@
   </script>
 
   {% include navbar.html %}
+  {% include toc.html html=content sanitize=false class="toc" item_class="toc-item"  %}
   <div class="wrapper post">
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
@@ -62,7 +63,6 @@
 
         <div class="page-content" itemprop="articleBody">
           {% include anchor_headings.html html=content anchorAttrs="navigator.clipboard.writeText(this.href);" anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
-          {% include toc.html html=content sanitize=false class="toc" item_class="toc-item"  %}
           {% if page.tweet %}
           <p>Comments this article on 
             <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
@@ -73,9 +73,7 @@
       {% if page.comments %}
         {% include comments.html %}
       {% endif %}
-
     </main>
-
     {% include scroll_top.html %}
     {% if page.modified %}
       <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
