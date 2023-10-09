@@ -9,7 +9,7 @@ body[data-theme="dark"] {
   h5,
   h6 {
     color: $dark-white;
-    text-shadow: 2px 2px 1px #000;
+    //text-shadow: 2px 2px 1px #000;
   }
 
   // Table
@@ -154,6 +154,16 @@ body[data-theme="dark"] {
 
       .menu-link {
         color: $dark-white;
+        &::before {
+          background-color: #e6cbb3;
+        }
+        &:hover {
+          //background-color: rgba(255, 255, 255, 0.1);
+          background-color: #172623
+        }
+        &.rss:hover {
+          background-color: unset;
+        }
       }
       @include media-query($on-mobile) {
         background-color: $dark-green-bg;
@@ -213,6 +223,11 @@ body[data-theme="dark"] {
       .nav-arrow {
         color: $dark-gray;
       }
+    }
+  }
+  .archive-tags {
+    .tag-item {
+    background-color: rgba(34, 43, 39, 0.75)
     }
   }
 
