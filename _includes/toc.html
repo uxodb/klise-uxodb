@@ -81,11 +81,13 @@
 
     {% capture listModifier %}{% if orderedList %}ol{% else %}ul{% endif %}{% endcapture %}
 
+    {% assign count = -1 %}
     {% for node in nodes %}
         {% if node == "" %}
             {% continue %}
         {% endif %}
 
+        {% assign count = count | plus: 1 %}
         {% assign currLevel = node | replace: '"', '' | slice: 0, 1 | times: 1 %}
 
         {% if currLevel < minHeader or currLevel > maxHeader %}
@@ -114,7 +116,7 @@
         {% assign header = _workspace[0] | replace: _hAttrToStrip, '' %}
 
         {% if include.item_class and include.item_class != blank %}
-            {% capture listItemClass %} class="{{ include.item_class | replace: '%level%', currLevel | split: '.' | join: ' ' }}"{% endcapture %}
+            {% capture listItemClass %} class="{{ include.item_class | replace: '%level%', currLevel | split: '.' | join: ' ' }}-{{ count }}"{% endcapture %}
         {% endif %}
 
         {% if include.submenu_class and include.submenu_class != blank %}
@@ -153,7 +155,6 @@
         {% endif %}
 
         {% capture jekyll_toc %}{{ jekyll_toc }}<li{{ listItemClass }}>{{ listItem }}{% endcapture %}
-
         {% assign lastLevel = currLevel %}
         {% assign firstHeader = false %}
     {% endfor %}
