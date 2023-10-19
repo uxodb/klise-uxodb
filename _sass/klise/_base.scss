@@ -307,6 +307,10 @@ blockquote {
   padding-right: $spacing-full;
   padding-left: $spacing-full;
   @extend %clearfix;
+  &.home {
+    max-width: -webkit-calc(#{$narrow-size} - (#{$spacing-full} * 2));
+    max-width: calc(#{$narrow-size} - (#{$spacing-full} * 2));
+  }
 
   @include media-query($on-mobile) {
     max-width: -webkit-calc(#{$narrow-size} - (#{$spacing-full}));
