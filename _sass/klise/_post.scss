@@ -270,5 +270,11 @@ a.post-nav-link {
 
 .post-updated-at {
   font-family: "Fantasque Sans Mono", "monospace";
-  color: antiquewhite;
+  color: navy;
+}
+
+body[data-theme="dark"] {
+  .post-updated-at {
+    color: antiquewhite;
+  }
 }
