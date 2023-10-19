@@ -3,6 +3,7 @@ title: "Multi Domain Protection with Authelia"
 date: 2023-09-19 23:59:00 +0200
 tags: [unix/linux, authelia, traefik, reverse proxy, docker, yaml, cli, ssh]
 published: true
+modified: 2023-10-19 13:08:00 +0200
 ---
 **A little while ago, I deployed <a href="https://www.authelia.com" target="_blank" rel="noopener">Authelia</a> for my services. In case you're unfamiliar with  Authelia, it is an authentication and authorization server capable of, for example: multi-factor authentication, <abbr title="Single sign-on">SSO</abbr>, <abbr title="OpenID Connect">OIDC</abbr>, and what's not unimportant, it isn't resource heavy. I employ Authelia to protect my services from being accessed without authentication and Authelia has the necessary access control to achieve this.**
 
@@ -244,6 +245,8 @@ Looks like adding the domain to our access control solved the issue. I'm not exa
 
 
 Lets hope the full implementation provides a cleaner solution, I'm already happy it has worked out. 😄
+
+*Edit: I haven't really taken time to troubleshoot this issue, but it seems to be an effect of the Authelia middleware accidentally being applied to the router, authelia-2. Make sure not to apply Authelia to itself!*
 
 ---
 
