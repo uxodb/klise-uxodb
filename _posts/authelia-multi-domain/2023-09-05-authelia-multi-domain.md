@@ -246,7 +246,7 @@ Looks like adding the domain to our access control solved the issue. I'm not exa
 
 Lets hope the full implementation provides a cleaner solution, I'm already happy it has worked out. 😄
 
-***Edit:*** *I haven't really taken time to troubleshoot this issue, but it seems to be an effect of the Authelia middleware accidentally being applied to the router, authelia-2. Make sure not to apply Authelia to itself!*
+***Edit:*** *I haven't really taken the time to troubleshoot this issue, but it seems to be an effect of the Authelia middleware (accidentally) being applied to the router, `authelia-2`. Make sure not to apply Authelia to itself!*
 
 ---
 
