@@ -4,7 +4,8 @@ body[data-theme="dark"] {
     background-color: #161d1a;
     -webkit-box-shadow: 1px  5px 6px 0px #000;
     -moz-box-shadow: 1px  5px 6px 0px #000;
-    box-shadow: 1px 5px 6px 0px #000;
+    box-shadow: 1px 5px 10px -1px #000;
+    
     .fa-chevron-up {
     color: #e6cbb3;
     }
@@ -16,7 +17,7 @@ aside.btn #scrolltop {
   border-radius: 100%;
   border: 2px solid rgba(107, 120, 134, 0.4);
   font-size: 23px;
-  box-shadow: 1px 5px 6px 0px #626c77;
+  box-shadow: 1px 5px 10px -1px #626c77;
   width: 3rem;
   height: 3rem;
   display: inline-block;
