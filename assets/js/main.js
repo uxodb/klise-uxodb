@@ -46,7 +46,7 @@ window.addEventListener("beforeunload", function (e) {
 });
 
 // Scroll to top button
-window.addEventListener("scroll", function (event) {
+window.addEventListener('scroll', (event) => {
     if (window.scrollY < 500 && window.location.pathname !== "/") {
         document.getElementById('scrolltop').style.opacity='0';
         document.getElementById('scrolltop').style.visibility='hidden';
@@ -60,3 +60,29 @@ function toTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
+// Table of Contents highlighting;
+const anchors = document.querySelectorAll('h2');
+const links = document.querySelectorAll('aside > nav > ul > li > a');
+const list = document.querySelectorAll('aside > nav > ul > li');
+
+window.addEventListener('scroll', (event) => {
+// window.addEventListener("scroll", function (event) {
+    if (typeof(anchors) != 'undefined' && anchors != null && typeof(links) != 'undefined' && links != null) {
+        let scrollTop = window.scrollY;
+      
+        list.forEach((li,index) => {
+          li.classList.remove('active');
+        });
+        links.forEach((link, index) => {
+            link.classList.remove("active");
+        });
+
+        for (var i = anchors.length-1; i >= 0; i--) {
+            if (scrollTop > anchors[i].offsetTop - 75) {
+                links[i].classList.add('active');
+                list[i].classList.add('active');
+                break;
+            }
+        }
+    }
+});

@@ -25,12 +25,12 @@
   </script>
 
   {% include navbar.html %}
-  <section class="toc-wrapper">
-    <h2 class="toc-heading">Contents</h2>
+  <aside id="toc-wrapper">
+    <h3 class="toc-heading">Contents</h2>
     <nav id="toc">
       {% include toc.html html=content sanitize=false class="toc-list" item_class="toc_item item-%count%"  %}
     </nav>
-  </section>
+  </aside>
   <div class="wrapper post">
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
