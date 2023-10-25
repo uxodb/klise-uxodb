@@ -59,15 +59,22 @@ window.addEventListener('scroll', (event) => {
 function toTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
 };
-
 // Table of Contents highlighting;
 const anchors = document.querySelectorAll('h2');
 const links = document.querySelectorAll('aside > nav > ul > li > a');
 const list = document.querySelectorAll('aside > nav > ul > li');
 
+document.addEventListener("DOMContentLoaded", (event) => {
+    if (!links.length) {
+        if (document.getElementById('toc-wrapper')) {
+            document.getElementById('toc-wrapper').style.display='none';
+        }
+    }
+});
+
 window.addEventListener('scroll', (event) => {
-// window.addEventListener("scroll", function (event) {
-    if (typeof(anchors) != 'undefined' && anchors != null && typeof(links) != 'undefined' && links != null) {
+    // if (typeof(anchors) != 'undefined' && anchors != null && typeof(links) != 'undefined' && links != null) {
+    if (links.length != 0) {
         let scrollTop = window.scrollY;
       
         list.forEach((li,index) => {
