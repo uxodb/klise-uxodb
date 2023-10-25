@@ -30,11 +30,7 @@ aside#toc-wrapper {
   border-radius: 10px;
   background-color: #ececec;
   display: block;
-  // box-shadow: 1px 5px 6px 0px #000;
-  // box-shadow: 8px 12px 13px -7px #000;
-  // box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, 
-             // rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  box-shadow: 8px 12px 13px -7px #000;
+  box-shadow: 8px 12px 13px -7px rgba(0, 0, 0, 0.5);
   margin-left: -20vw;
   @include media-query($on-mobile) {
     display: none;
@@ -57,6 +53,8 @@ aside#toc-wrapper {
     border-left: solid 1px $smoke;
     margin-left: 10px;
     &.active {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
       border-color:#003fff;// #76ffd2;
       background-color:#f2f2f2;
     }
