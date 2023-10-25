@@ -1,3 +1,6 @@
+---
+layout: js_minifier
+---
 (() => {
   // Theme switch
   const body = document.body;
