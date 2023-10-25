@@ -30,6 +30,11 @@ body[data-theme="dark"] {
   .author .author-bio {
     color: rgba(199,190,190,0.9);
   }
+  .author .author-avatar-wrapper {
+    opacity: 1;
+    -webkit-animation: 0.5s ease-in forwards avafadeindark;
+    animation: 0.5s ease-in forwards avafadeindark;
+  }
 
   // Post
   .page-content {
