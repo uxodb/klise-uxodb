@@ -32,7 +32,7 @@ $ ssh root@78.46.174.158
 After we do so, we're greeted by Hetzner's Rescue System
 
 <figure>
-<img src="/hetzner-installing-linux/rescue.png" alt="Hetzner rescue system">
+<img src="/hetzner-installing-linux/rescue.webp" alt="Hetzner rescue system">
 <figcaption>Hetzner's rescue system when logging into the box with ssh</figcaption>
 </figure>
 
@@ -45,7 +45,7 @@ From here on, we'll start up Hetzner's tool for installing our OS. We do this by
 ```
 Then we are presented a menu in which we're given the option to have our preferred distribution installed. Its also possible to provide your own image, but I've decided to go with Archlinux:
 <figure>
-<img src="/hetzner-installing-linux/installimage_menu.png" alt="Installimage menu">
+<img src="/hetzner-installing-linux/installimage_menu.webp" alt="Installimage menu">
 <figcaption>The menu for choosing your distribution</figcaption>
 </figure>
 After selecting Archlinux and proceeding, an <abbr title="Midnight Commander's included editor">mcedit</abbr> is launched with the configuration file.

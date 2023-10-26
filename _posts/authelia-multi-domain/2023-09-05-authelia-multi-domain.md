@@ -12,7 +12,7 @@ modified: 2023-10-19 13:08:00 +0200
 ## Running Authelia
 Authelia acts as a companion for reverse proxies, it's responsible for evaluating  requests and determines whether to allow, deny or redirect the request. To illustrate this, I've attached a basic diagram of the architecture below.
 <figure>
-<img src="/authelia-multi-domain/authelia-proxy.png" alt="Authelia Diagram">
+<img src="/authelia-multi-domain/authelia-proxy.webp" alt="Authelia Diagram">
 <figcaption>Authelia working with the reverse proxy to evaluate the incoming request. </figcaption>
 </figure>
 
