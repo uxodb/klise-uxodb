@@ -26,6 +26,12 @@
 
   {% include navbar.html %}
   <div class="wrapper post">
+    <aside id="toc-wrapper">
+      <h3 class="toc-heading">Contents</h2>
+      <nav id="toc">
+        {% include toc.html html=content sanitize=false class="toc-list" item_class="toc_item item-%count%"  %}
+      </nav>
+    </aside>
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
@@ -72,9 +78,8 @@
       {% if page.comments %}
         {% include comments.html %}
       {% endif %}
-
     </main>
-
+    {% include scroll_top.html %}
     {% if page.modified %}
       <small class="post-updated-at">Updated at: {{page.modified | date: "%d-%m-%Y %H:%M"}}</small>
     {% endif %}
