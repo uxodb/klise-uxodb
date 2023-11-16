@@ -24,14 +24,14 @@ aside#toc-wrapper {
   margin: 0;
   margin-top: 11em; // 20.5em;
   float: left;
-  top: 67px;
+  top: 68px;
   max-width: 250px;
   font-size: 15px;
   border-radius: 10px;
   background-color: #ececec;
   display: block;
   box-shadow: 8px 12px 13px -7px rgba(0, 0, 0, 0.5);
-  margin-left: -20vw;
+  margin-left: -350px;
   @include media-query($on-mobile) {
     display: none;
   }
@@ -71,31 +71,3 @@ aside#toc-wrapper {
     }
   }
 }
-
-
-/* @media (min-width: 768px) { //1650 1400
-  ul.toc  {
-    
-  }
-} */
-/*
-@media (min-width: 1401px) {
-  ul.toc  {
-    right: 1vw;
-  }
-}
-@media (min-width: 1681px) {
-  ul.toc  {
-    right: 5vw;
-  }
-}
-@media (min-width: 1921px) {
-  ul.toc  {
-    right: 15vw;
-  }
-}
-@media (min-width: 2561px) {
-  ul.toc  {
-    right: 20vw
-  }
-}*/
